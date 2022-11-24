@@ -168,7 +168,7 @@ class PenjelajahanController extends Controller
                 ]);
             }*/
             $sql= 'SELECT * WHERE {
-                ?WisataOlahraga wisata:isLocatedAt ?'.$jelajah.' .?WisataOlahraga wisata:memilikiGambar ?memilikiGambar
+                ?ObjekWisata wisata:isLocatedAt ?'.$jelajah.' .?ObjekWisata wisata:memilikiGambar ?memilikiGambar
               }';
             $handphone = $this->sparql->query($sql);
         }
@@ -179,7 +179,7 @@ class PenjelajahanController extends Controller
         $resultHandphone = [];
         foreach ($handphone as $item) {
             array_push($resultHandphone, [
-                'nama' => $this->parseData($item->WisataOlahraga->getUri()),
+                'nama' => $this->parseData($item->ObjekWisata->getUri()),
                 'gambar' => $this->parseData($item->memilikiGambar->getValue()),
                 //'harga' => $this->parseData($item->harga->getValue()),
             ]);
