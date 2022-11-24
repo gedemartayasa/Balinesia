@@ -52,7 +52,6 @@
               <li><a href="/pencarian">Pencarian</a></li>
               <li><a href="/penjelajahan">Penjelajahan</a></li>
               <li><a href="/rekomendasi">Rekomendasi</a></li>
-              <li><a href="https://docs.google.com/forms/d/18PeC-4nYp7WpNqERW2toqyU-V8aJY-BqcSyYnEuQRTs/edit">Questionnaire</a></li>
             </ul>
           </li>
         </ul>

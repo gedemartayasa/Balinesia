@@ -1,55 +1,55 @@
 @extends('layouts.layout')
 @section('container')
-<div class="card">
-  <div class="card-body">
-    <strong>Destinasi Wisata : </strong> {{-- {{ str_replace('_',' ',$data[0]['nama']) }} --}}
-  </div>
+
+@foreach ($detail as $dtl)
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4 mb-3">
+        {{-- <img src="{{ asset('img/handphone/'.$dtl['gambar'])}}" class="img-fluid rounded-start mt-3 px-2" alt="..."> --}}
+        </div>
+        <div class="col-md-7">
+        <div class="card-body">
+            <h3 class="card-title mb-4">{{ $dtl['nama']}}</h3>
+            <h5 class="mb-3">Spesification :</h5>
+            <p class="card-text">
+                <span>RAM :</span>
+                {{ str_replace('RAM_','',$dtl['ram'])}} GB
+            </p>
+            <p class="card-text">
+                <span>Baterai :</span>
+                {{ str_replace('Baterai_','',$dtl['baterai']) }} mAh
+            </p>
+            <p class="card-text">
+                <span>Memori :</span>
+                {{ str_replace('Memori_','',$dtl['memori']) }} GB
+            </p>
+            <p class="card-text">
+                <span>Prosesor :</span>
+                {{ str_replace('Prosesor_','',$dtl['prosesor']) }} 
+            </p>
+            <p class="card-text">
+                <span>Sistem Operasi :</span>
+                {{ str_replace('SO_','',$dtl['sistemoperasi'])}} 
+            </p>
+            <p class="card-text">
+                <span>Kamera Depan :</span>
+                {{ str_replace('KD_','',$dtl['kameradepan'])}} MP 
+            </p>
+            <p class="card-text">
+                <span>Kamera Belakang :</span>
+                {{ str_replace('KB_','',$dtl['kamerabelakang'])}} MP
+            </p>
+            <p class="card-text">
+                <span>Ukuran Layar :</span>
+                {{ str_replace('UkuranLayar_','',$dtl['ukuranlayar'])}} inci
+            </p>
+            <p class="card-text">
+                <span>Harga :</span>
+                Rp.{{ $dtl['harga']}}
+            </p>
+        </div>
+        </div>
+    </div>
 </div>
-    <ol class="list-group list-group-numbered">
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Lokasi Wisata</div>
-      @foreach($data as $item)
-          {{ str_replace('_',' ',$item['upacara']) }} ( {{ str_replace('_',' ',$item['yadnya']) }})
-      @endforeach
-      @php $count=count($data)@endphp
-    </div>
-    <span class="badge bg-primary rounded-pill">{{ $count }}</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Jam Buka</div>
-      {{ $data[0]['fungsi'] }}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Harga Tiket Masuk</div>
-      {{ $data[0]['tingkat'] }}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Harga Sewa Wahana</div>
-      {{ $data[0]['durasi'] }}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Harga Parkir Motor</div>
-      {{ $data[0]['tempo'] }}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-bold">Harga Parkir Mobil</div>
-      {{ $data[0]['tempo'] }}
-    </div>
-    <span class="badge bg-primary rounded-pill">14</span>
-  </li>
-</ol>
+@endforeach
 @endsection

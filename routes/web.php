@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\BrowsingController;
+use App\Http\Controllers\PenjelajahanController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\SearchingController;
+use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\RekomendasiController;
 
 /*
@@ -19,8 +19,9 @@ use App\Http\Controllers\RekomendasiController;
 */
 
 Route::get('/', [DashboardController::class,'landingPage']);
-Route::get('/dashboard', [DashboardController::class,'index']);
-Route::get('/pencarian', [SearchingController::class, 'searching']);
-Route::get('/penjelajahan', [BrowsingController::class, 'browsing']);
+Route::get('/pencarian', [PencarianController::class, 'searching']);
 Route::get('/rekomendasi', [RekomendasiController::class, 'rekomendasi']);
-Route::get('/detail-destinasi/{namaDestinasi}', [DetailController::class,'index']);
+Route::get('/penjelajahan', [PenjelajahanController::class, 'browsing']);
+Route::get('/dashboard', [DashboardController::class,'index']);
+Route::get('/detail_Wisata/{nama_Wisata}', [DetailController::class, 'detail']);
+Route::get('/jelajah/{kriteria}/{jelajah}',[PenjelajahanController::class,'jelajah']);
