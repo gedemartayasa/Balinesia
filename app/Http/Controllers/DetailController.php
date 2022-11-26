@@ -6,44 +6,39 @@ use Illuminate\Http\Request;
 
 class DetailController extends Controller
 {
-    public function detail($nama_handphone)
+    public function detail($nama_wisata)
     {
-        /*$detail = $this->sparql->query('SELECT * WHERE
-        {VALUES ?Handphone{handphone:'.$nama_handphone.'}.
-            ?Handphone handphone:memilikiRAM ?RAM.
-            ?Handphone handphone:memilikiBaterai ?Baterai.
-            ?Handphone handphone:memilikiKameraDepan ?KameraDepan.
-            ?Handphone handphone:memilikiKameraBelakang ?KameraBelakang.
-            ?Handphone handphone:memilikiMemori ?Memori.
-            ?Handphone handphone:memilikiProsesor ?Prosesor.
-            ?Handphone handphone:memilikiSistemOperasi ?SistemOperasi.
-            ?Handphone handphone:memilikiUkuranLayar ?UkuranLayar.
-            ?Handphone handphone:nilaiHarga ?Harga.
-            ?Handphone handphone:memilikiGambar ?Gambar
+        $detail = $this->sparql->query('SELECT * WHERE
+        {VALUES ?ObjekWisata{wisata:'.$nama_wisata.'}.          
+            ?ObjekWisata wisata:memilikiGambar ?memilikiGambar.
+            ?ObjekWisata wisata:isLocatedAt ?Banjar.
+            ?Banjar wisata:isPartOf ?Desa.
+            ?Desa wisata:isPartOf ?Kecamatan.
+            ?Kecamatan wisata:isPartOf ?Kabupaten.
+            ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana
         }');
 
         $result=[];
         foreach ($detail as $dtl) {
             array_push($result, [
-                'nama' => str_replace('_',' ',$this->parseData($dtl->Handphone->getUri())),
-                'ram' => $this->parseData($dtl->RAM->getUri()),
-                'baterai' => $this->parseData($dtl->Baterai->getUri()),
-                'kameradepan' => $this->parseData($dtl->KameraDepan->getUri()),
-                'kamerabelakang' => $this->parseData($dtl->KameraBelakang->getUri()),
-                'memori' => $this->parseData($dtl->Memori->getUri()),
-                'prosesor' => str_replace('_',' ',$this->parseData($dtl->Prosesor->getUri())),
-                'sistemoperasi' => str_replace('_',' ',$this->parseData($dtl->SistemOperasi->getUri())),
-                'ukuranlayar' => $this->parseData($dtl->UkuranLayar->getUri()),
-                'harga' => $this->parseData($dtl->Harga->getValue()),
-                'gambar' => $this->parseData($dtl->Gambar->getValue())
+                'nama' => str_replace('_',' ',$this->parseData($dtl->ObjekWisata->getUri())),
+                'banjar' => $this->parseData($dtl->Banjar->getUri()),
+                'desa' => $this->parseData($dtl->Desa->getUri()),
+                'kecamatan' => $this->parseData($dtl->Kecamatan->getUri()),
+                'kabupaten' => $this->parseData($dtl->Kabupaten->getUri()),
+                //'jambuka' => str_replace('_',' ',$this->parseData($dtl->JamBuka->getUri())),
+                //'hargaparkirmotor' => str_replace('_',' ',$this->parseData($dtl->HargaParkirMotor->getUri())),
+                //'hargaparkirmobil' => $this->parseData($dtl->HargaParkirMobil->getUri()),
+                'hargasewa' => $this->parseData($dtl->HargaSewaWahana->getValue()),
+                'gambar' => $this->parseData($dtl->memilikiGambar->getValue())
                 // 'pros' => $this->parseData($dtl->pros->getValue())
             ]);
-        }*/
+        }
         
-        return view('detail_Wisata', [
+        return view('detail', [
             "title" => 'Detail Wisata',
-            "page" => "detail_Wisata",
-            //"detail" => $result
+            "page" => "detail",
+            "detail" => $result
         ]);
     }
 }

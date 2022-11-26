@@ -23,5 +23,5 @@ Route::get('/pencarian', [PencarianController::class, 'searching']);
 Route::get('/rekomendasi', [RekomendasiController::class, 'rekomendasi']);
 Route::get('/penjelajahan', [PenjelajahanController::class, 'browsing']);
 Route::get('/dashboard', [DashboardController::class,'index']);
-Route::get('/detail_Wisata/{nama_Wisata}', [DetailController::class, 'detail']);
+Route::get('/detail/{nama_wisata}', [DetailController::class, 'detail']);
 Route::get('/jelajah/{kriteria}/{jelajah}',[PenjelajahanController::class,'jelajah']);
