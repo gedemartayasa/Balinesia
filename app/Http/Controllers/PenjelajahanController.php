@@ -188,13 +188,52 @@ class PenjelajahanController extends Controller
         ]);
     }
 
-    public function jelajah($jelajah){
-        $sql= 'SELECT * WHERE {
-            ?ObjekWisata wisata:isLocatedAt ?'.$jelajah.' .
-            ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
-            ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
-            }';
-        $wisata = $this->sparql->query($sql);
+    public function jelajah($kriteria, $jelajah){
+        if($kriteria == 'Banjar'){
+            /*$sqli = 'SELECT * WHERE{VALUES ?aplikasi{handphone:' . $jelajah . '}?aplikasi handphone:minMemori ?minMemori .?aplikasi handphone:minRAM ?minRAM .?aplikasi handphone:minSistemOperasi ?minSO .?aplikasi handphone:minProsesor ?minProsesor }';
+            $minimumRequirement = $this->sparql->query($sqli);
+            $rowReq = [];
+            foreach ($minimumRequirement as $item) {
+                array_push($rowReq, [
+                    'minMemori' => $this->parseData($item->minMemori->getValue()),
+                    'minProsesor' => $this->parseData($item->minProsesor->getValue()),
+                    'minSO' => $this->parseData($item->minSO->getValue()),
+                    'minRAM' => $this->parseData($item->minRAM->getValue())
+                ]);
+            }*/
+            $sql= 'SELECT * WHERE {
+                ?ObjekWisata wisata:memilikiBanjar ?'.$jelajah.' .
+                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
+                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                }';
+            $wisata = $this->sparql->query($sql);
+            
+        }
+        else if($kriteria == 'Desa'){
+            $sql= 'SELECT * WHERE {
+                ?ObjekWisata wisata:memilikiDesa ?'.$jelajah.' .
+                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
+                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                }';
+            $wisata = $this->sparql->query($sql);  
+        }
+        else if($kriteria == 'Kecamatan'){
+            $sql= 'SELECT * WHERE {
+                ?ObjekWisata wisata:memilikiKecamatan ?'.$jelajah.' .
+                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
+                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                }';
+            $wisata = $this->sparql->query($sql);  
+        }
+        else {
+            $sql= 'SELECT * WHERE {
+                ?ObjekWisata wisata:memilikiKabupaten ?'.$jelajah.' .
+                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
+                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                }';
+            $wisata = $this->sparql->query($sql);
+        }
+        
         
         $resultWisata = [];
         foreach ($wisata as $item) {

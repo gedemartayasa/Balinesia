@@ -25,83 +25,65 @@
                 </div>
                 <div class="col-md-4">
                     <div class="input-group mb-3" >
-                        <label class="input-group-text">Lokasi Wisata</label>
-                        <select class="form-select" aria-label="Default select example" id="cariDurasi" name="cariDurasi">
-                            <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowDurasi'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama'])}}</option>
-                            @endforeach
-                            --}}
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-group mb-3" >
                         <label class="input-group-text">Jam Buka</label>
-                        <select class="form-select" aria-label="Default select example" id="cariGenre" name="cariGenre">
+                        <select class="form-select" aria-label="Default select example" id="cariJamBuka" name="cariJamBuka">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowGenre'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama']) }}</option>
+                            @foreach($data['listJamBuka'] as $item)
+                                <option value="{{ $item['jamBuka'] }}">{{ str_replace('_',' ',$item['jamBuka']) }}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
                 </div>
-                
-            </div>
-            <div class="row">
                 <div class="col-md-4">   
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Tiket Masuk</label>
-                        <select class="form-select" aria-label="Default select example"id="cariTempo" name="cariTempo">
+                        <select class="form-select" aria-label="Default select example"id="cariHargaTiket" name="cariHargaTiket">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowTempo'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama'])}}</option>
+                            @foreach($data['listHargaTiket'] as $item)
+                                <option value="{{ $item['hargaTiket'] }}">{{ str_replace('_',' ',$item['hargaTiket'])}}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
-                </div>
+                </div>           
+            </div>
+            <div class="row">
                 <div class="col-md-4">
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Sewa Wahana</label>
-                        <select class="form-select" aria-label="Default select example"id="cariTingkatKesulitan" name="cariTingkatKesulitan">
+                        <select class="form-select" aria-label="Default select example"id="cariHargaSewa" name="cariHargaSewa">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowTingkatKesulitan'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama'])}}</option>
+                            @foreach($data['listHargaSewa'] as $item)
+                                <option value="{{ $item['hargaSewa'] }}">{{ str_replace('_',' ',$item['hargaSewa'])}}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Parkir Motor</label>
-                        <select class="form-select" aria-label="Default select example" id="cariPancaYadnya" name="cariPancaYadnya">
+                        <select class="form-select" aria-label="Default select example" id="cariHargaParkirMotor" name="cariHargaParkirMotor">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowPancaYadnya'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama']) }}</option>
+                            @foreach($data['listHargaParkirMotor'] as $item)
+                                <option value="{{ $item['hargaParkirMotor'] }}">{{ str_replace('_',' ',$item['hargaParkirMotor']) }}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Parkir Mobil</label>
-                        <select class="form-select" aria-label="Default select example" id="cariUpacaraYadnya" name="cariUpacaraYadnya">
+                        <select class="form-select" aria-label="Default select example" id="cariHargaParkirMobil" name="cariHargaParkirMobil">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowUpacaraYadnya'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',str_replace('_','',$item['nama'])) }} </option>
+                            @foreach($data['listHargaParkirMobil'] as $item)
+                            <option value="{{ $item['hargaParkirMobil'] }}">{{ str_replace('_',' ',$item['hargaParkirMobil']) }}</option>
                             @endforeach
-                            --}}
                         </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3">
+                        <label class="input-group-text">Budget Wisata</label>
+                        <input type="text" class="form-control" id="cariHarga" name="cariHarga">
                     </div>
                 </div>
             </div>
@@ -114,41 +96,33 @@
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Hasil Pencarian</h6>
                 </div>
-                <div class="card-body">
-                    {{--
+                <div class="card-body">   
                     @if($data['resp'] == 0)
                         <h4 class="small font-weight-bold">Belum terdapat pencarian data<span> </h4>
-                    @elseif($data['resp'] == 1 && $data['jumlahLagu'] == 0)
+                    @elseif($data['resp'] == 1 && $data['jumlahWisata'] == 0)
                         <h4 class="small font-weight-bold">Data tidak ditemukan<span></h4>
                     @else
-                        @foreach ($data['rowLagu'] as $item)
+                        @foreach ($data['searching1'] as $item)
                         <ul class="list-group list-group-flush">
-                            <a href="/detail-gender/{{$item['nama']}}" class="list-group-item list-group-item-action">{{ str_replace('_',' ',$item['nama']) }}</li></a>
+                            <a href="/detail/{{$item['nama']}}" class="list-group-item list-group-item-action">{{ str_replace('_',' ',$item['nama']) }}</li></a>
                         </ul>
                         @endforeach
                     @endif
-                    --}}
                 </div>
             </div>
         </div>
-        {{--
-        @if($data['resp']==1 && $data['jumlahLagu']>=1)
-        --}}
+        @if($data['resp']==1 && $data['jumlahWisata']>=1)
         <div class="col-lg-6 mb-4 mt-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Proses SPARQL</h6>
                 </div>
                 <div class="card-body">
-                    {{--  
                     <h4 class="small">{{ $data['sql'] }}</h4>
-                    --}}
                 </div>
             </div>
         </div>
-        {{--
         @endif
-        --}}
     </div>
     </div>
 </div>

@@ -8,64 +8,64 @@ class PencarianController extends Controller
 {
     public function searching (Request $request)
     {
-        /*$ram = $this -> sparql -> query('SELECT * WHERE{?ram a handphone:RAM} ORDER BY ?ram');
-        $memori = $this -> sparql -> query('SELECT * WHERE{?memori a handphone:Memori} ORDER BY ?memori');
-        $baterai = $this -> sparql -> query('SELECT * WHERE{?baterai a handphone:Baterai} ORDER BY ?baterai');
-        $kameraDepan =$this->sparql->query('SELECT * WHERE{?kameraDepan a handphone:KameraDepan} ORDER BY ?kameraDepan');
-        $kameraBelakang =$this->sparql->query('SELECT * WHERE{?kameraBelakang a handphone:KameraBelakang} ORDER BY ?kameraBelakang');
-        $sistemOperasi =$this->sparql->query('SELECT * WHERE{?sistemOperasi a handphone:SistemOperasi} ORDER BY ?sistemOperasi');
-        $ukuranLayar =$this->sparql->query('SELECT * WHERE{?ukuranLayar a handphone:UkuranLayar}ORDER BY ?ukuranLayar');
+        //$jenisWisata = $this -> sparql -> query('SELECT * WHERE{?ObjekWisata a wisata:WisataOlahragaAir} ORDER BY ?WisataOlahragaAir');
+        $jamBuka = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:JamBuka} ORDER BY ?JamBuka');
+        $hargaTiket = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:HargaTiketMasuk} ORDER BY ?HargaTiketMasuk');
+        $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana} ORDER BY ?HargaSewaWahana');
+        $hargaParkirMotor =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMotor} ORDER BY ?HargaParkirMotor');
+        $hargaParkirMobil =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMobil} ORDER BY ?HargaParkirMobil');
+        //$ukuranLayar =$this->sparql->query('SELECT * WHERE{?ukuranLayar a handphone:UkuranLayar}ORDER BY ?ukuranLayar');
 
         //prosesor
-        $prosesor = $this->sparql->query('SELECT * WHERE {
+        /*$prosesor = $this->sparql->query('SELECT * WHERE {
             {?prosesor a handphone:Exynos}
             UNION {?prosesor a handphone:MediaTek}
             UNION {?prosesor a handphone:Qualcomm}
             UNION {?prosesor a handphone:Kirin}
-        }');
+        }');*/
 
 
-        $resultRAM=[];
-        $resultMemori=[];
-        $resultBaterai = [];
-        $resultKameraDepan = [];
-        $resultKameraBelakang = [];
-        $resultProsesor = [];
-        $resultSistemOperasi = [];
-        $resultUkuranLayar = [];
+        //$resultRAM=[];
+        $resultJamBuka=[];
+        $resultHargaTiket = [];
+        $resultHargaSewa = [];
+        $resultHargaParkirMotor = [];
+        $resultHargaParkirMobil = [];
+        //$resultSistemOperasi = [];
+        //$resultUkuranLayar = [];
 
-        foreach($ram as $item){
+        /*foreach($ram as $item){
             array_push($resultRAM, [
                 'ram' => $this->parseData($item->ram->getUri())
             ]);
-        }
-        foreach ($memori as $item) {
-            array_push($resultMemori, [
-                'memori' => $this->parseData($item->memori->getUri())
+        }*/
+        foreach ($jamBuka as $item) {
+            array_push($resultJamBuka, [
+                'jamBuka' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
-        foreach ($baterai as $item) {
-            array_push($resultBaterai, [
-                'baterai' => $this->parseData($item->baterai->getUri())
+        foreach ($hargaTiket as $item) {
+            array_push($resultHargaTiket, [
+                'hargaTiket' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
-        foreach ($kameraDepan as $item) {
-            array_push($resultKameraDepan, [
-                'kameraDepan' => $this->parseData($item->kameraDepan->getUri())
+        foreach ($hargaSewa as $item) {
+            array_push($resultHargaSewa, [
+                'hargaSewa' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
-        foreach ($kameraBelakang as $item) {
-            array_push($resultKameraBelakang, [
-                'kameraBelakang' => $this->parseData($item->kameraBelakang->getUri())
+        foreach ($hargaParkirMotor as $item) {
+            array_push($resultHargaParkirMotor, [
+                'hargaParkirMotor' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
         
-        foreach ($sistemOperasi as $item) {
-            array_push($resultSistemOperasi, [
-                'sistemOperasi' => $this->parseData($item->sistemOperasi->getUri())
+        foreach ($hargaParkirMobil as $item) {
+            array_push($resultHargaParkirMobil, [
+                'hargaParkirMobil' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
-        foreach ($ukuranLayar as $item) {
+        /*foreach ($ukuranLayar as $item) {
             array_push($resultUkuranLayar, [
                 'ukuranLayar' => $this->parseData($item->ukuranLayar->getUri())
             ]);
@@ -74,13 +74,13 @@ class PencarianController extends Controller
             array_push($resultProsesor, [
                 'prosesor' => $this->parseData($item->prosesor->getUri())
             ]);
-        }
+        }*/
         
-        if(isset($_GET['cariSpesifikasi'])){
+        if(isset($_GET['cariWisata'])){
             $resp = 1;
             $sql = 'SELECT * WHERE {';
             $i = 0;
-            if($request->cariRAM != ''){
+            /*if($request->cariRAM != ''){
                 if ( $i == 0 ){
                     $sql = $sql . '?hp handphone:memilikiRAM handphone:' . $request->cariRAM;
                     $i++;
@@ -91,68 +91,68 @@ class PencarianController extends Controller
             }
             else{
                 $sql = $sql;
-            }
-            if ($request->cariBaterai!= '') {
+            }*/
+            if ($request->cariJamBuka!= '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiBaterai handphone:' . $request->cariBaterai;
+                    $sql = $sql . '?ObjekWisata wisata:memilikiJamBuka wisata:' . $request->cariJamBuka;
                     $i++;
                 }
                 else{
-                    $sql = $sql . '. ?hp handphone:memilikiBaterai handphone:' . $request->cariBaterai;
+                    $sql = $sql . '. ?ObjekWisata wisata:memilikiJamBuka wisata:' . $request->cariJamBuka;
                 } 
             } 
             else {
                 $sql = $sql;
             }
-            if ($request->cariKameraDepan!= '') {
+            if ($request->cariHargaTiket!= '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiKameraDepan handphone:' . $request->cariKameraDepan;
+                    $sql = $sql . '?ObjekWisata wisata:memilikiHargaTiketMasuk wisata:' . $request->cariHargaTiket;
                     $i++;
                 } 
                 else {
-                    $sql = $sql . '. ?hp handphone:memilikiKameraDepan handphone:' . $request->cariKameraDepan;
+                    $sql = $sql . '. ?ObjekWisata wisata:memilikiHargaTiketMasuk wisata:' . $request->cariHargaTiket;
                 }   
             } 
             else {
                 $sql = $sql;
             }
-            if ($request->cariKameraBelakang!= '') {
+            if ($request->cariHargaSewa!= '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiKameraBelakang handphone:' . $request->cariKameraBelakang;
+                    $sql = $sql . '?ObjekWisata wisata:memilikiHargaSewaWahana wisata:' . $request->cariHargaSewa;
                     $i++;
                 } 
                 else {
-                    $sql = $sql . '. ?hp handphone:memilikiKameraBelakang handphone:' . $request->cariKameraBelakang;
+                    $sql = $sql . '. ?ObjekWisata wisata:memilikiHargaSewaWahana wisata:' . $request->cariHargaSewa;
                 }  
             } 
             else {
                 $sql = $sql;
             }
-            if ($request->cariMemori!= '') {
+            if ($request->cariHargaParkirMotor!= '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiMemori handphone:' . $request->cariMemori;
+                    $sql = $sql . '?ObjekWisata wisata:memilikiHargaParkirMotor wisata:' . $request->cariHargaParkirMotor;
                     $i++;
                 } 
                 else {
-                    $sql = $sql . '. ?hp handphone:memilikiMemori handphone:' . $request->cariMemori;
+                    $sql = $sql . '. ?ObjekWisata wisata:memilikiHargaParkirMotor wisata:' . $request->cariHargaParkirMotor;
                 }  
             } 
             else {
                 $sql = $sql;
             }
-            if ($request->cariSistemOperasi!= '') {
+            if ($request->cariHargaParkirMobil!= '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiSistemOperasi handphone:' . $request->cariSistemOperasi;
+                    $sql = $sql . '?ObjekWisata wisata:memilikiHargaParkirMobil wisata:' . $request->cariHargaParkirMobil;
                     $i++;
                 } 
                 else {
-                    $sql = $sql . '. ?hp handphone:memilikiSistemOperasi handphone:' . $request->cariSistemOperasi;
+                    $sql = $sql . '. ?ObjekWisata wisata:memilikiHargaParkirMobil wisata:' . $request->cariHargaParkirMobil;
                 }  
             } 
             else {
                 $sql = $sql;
             }
-            if ($request->cariUkuranLayar!= '') {
+            /*if ($request->cariUkuranLayar!= '') {
                 if ($i == 0) {
                     $sql = $sql . '?hp handphone:memilikiUkuranLayar handphone:' . $request->cariUkuranLayar;
                     $i++;
@@ -174,64 +174,64 @@ class PencarianController extends Controller
                 }
             } else {
                 $sql = $sql;
-            }
+            }*/
             if ($request->cariHarga != '') {
                 if ($i == 0) {
-                    $sql = $sql . '?hp handphone:nilaiHarga ?harga FILTER(?harga <' . $request->cariHarga.')';
+                    $sql = $sql . '?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana FILTER(?HargaSewaWahana <' . $request->cariHarga.')';
                     $i++;
                 } else {
-                    $sql = $sql .'. ?hp handphone:nilaiHarga ?harga FILTER(?harga <' . $request->cariHarga . ')';
+                    $sql = $sql .'. ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana FILTER(?HargaSewaWahana <' . $request->cariHarga . ')';
                 }
             } else {
                 $sql = $sql;
             }
             $sql = $sql . '}';
             $queryData = $this->sparql->query($sql);
-            $resultHandphone = [];
+            $resultWisata = [];
             if ($i === 0) {
-                $resultHandphone = [];
+                $resultWisata = [];
             } else {
                 foreach ($queryData as $item) {
-                    array_push($resultHandphone, [
-                        'nama' => $this->parseData($item->hp->getUri())
+                    array_push($resultWisata, [
+                        'nama' => $this->parseData($item->ObjekWisata->getUri())
                     ]);
                 }
             }
-            $jumlahHandphone = count($resultHandphone);
+            $jumlahWisata = count($resultWisata);
         }
         else if(isset($_GET['reset'])){
             header('Location: /pencarian');
-            $resultHandphone = [];
-            $jumlahHandphone = 0;
+            $resultWisata = [];
+            $jumlahWisata = 0;
             $resp = 0;
             $sql=[];
         }
         else{
-            $resultHandphone = [];
-            $jumlahHandphone = 0;
+            $resultWisata = [];
+            $jumlahWisata = 0;
             $resp = 0;
             $sql=[];
         }
         
         $data = [
-            'listRAM' => $resultRAM,
-            'listMemori' => $resultMemori,
-            'listBaterai' => $resultBaterai,
-            'listKameraDepan' => $resultKameraDepan,
-            'listKameraBelakang' => $resultKameraBelakang,
-            'listProsesor' => $resultProsesor,
-            'listSistemOperasi' => $resultSistemOperasi,
-            'listUkuranLayar' => $resultUkuranLayar,
-            'searching1' => $resultHandphone,
-            'jumlahHandphone' => $jumlahHandphone,
+            //'listRAM' => $resultRAM,
+            'listJamBuka' => $resultJamBuka,
+            'listHargaTiket' => $resultHargaTiket,
+            'listHargaSewa' => $resultHargaSewa,
+            'listHargaParkirMotor' => $resultHargaParkirMotor,
+            'listHargaParkirMobil' => $resultHargaParkirMobil,
+            /*'listSistemOperasi' => $resultSistemOperasi,
+            'listUkuranLayar' => $resultUkuranLayar,*/
+            'searching1' => $resultWisata,
+            'jumlahWisata' => $jumlahWisata,
             'resp' => $resp,
             'sql' => $sql
-        ];*/
+        ];
             
         return view('pencarian', [
             'title' => 'Fitur Pencarian',
             'page' => 'pencarian', 
-            //'list' =>  $data
+            'data' =>  $data
         ]);
     }
 }
