@@ -71,7 +71,7 @@
     </div>
     <input type="submit" name="rekomendasi" value="Rekomendasi" class="btn btn-dark">
     <input type="submit" name="reset" value="Reset" class="btn btn-danger">
-    {{-- @if($data['jumlahCari'] == 0 && $data['resp'] == 0) --}}
+    @if($data['jumlahCari'] == 0 && $data['resp'] == 0) 
     <div class="row">
         <div class="col-lg-5 col-md-9 mb-4 mt-4">
             <div class="card shadow mb-4">
@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>             
-    {{-- @elseif($data['resp'] == 1 && $data['jumlahCari'] == 0) --}}
+    @elseif($data['resp'] == 1 && $data['jumlahCari'] == 0)
     <div class="row">
         <div class="col-lg-6 mb-4 mt-4">
             <div class="card shadow mb-4">
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-    {{-- @else --}}
+    @else 
     <div class="row">
         <div class="col-lg-6 mb-4 mt-4">
             <div class="card shadow mb-4">
@@ -105,7 +105,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Proses SPARQL</h6>
                 </div>
                 <div class="card-body">
-                    {{-- <h4 class="small">{{ $data['sql'] }}<span> </h4> --}}
+                    <h4 class="small">{{ $data['sql'] }}<span> </h4> 
                 </div>
             </div>
         </div>
@@ -130,7 +130,7 @@
             <tbody>
             <?php $i = 0;?>
             
-            {{-- @foreach($data['resultSpesifikasi'] as $item)
+            @foreach($data['resultSpesifikasi'] as $item)
                 <tr class="table-<?php if($i%2==0) {
                     echo "secondary";
                 }else{
@@ -145,13 +145,13 @@
                 <td>{{ str_replace('Baterai_','',$item['baterai'])}}</td>
                 <td>{{ str_replace('Memori_','',$item['memori'])}}</td>
                 <td>{{ str_replace('_',' ',$item['prosesor'])}}</td>
-                {{-- <td>{{ $data['nilai'][0]['nprosesor']}}</td> --}}
-                {{-- <td>{{ str_replace('KD_','',$item['kd'])}}</td>
+                <td>{{ $data['nilai'][0]['nprosesor']}}</td> 
+                <td>{{ str_replace('KD_','',$item['kd'])}}</td>
                 <td>{{ str_replace('_',' ',$item['so'])}}</td>
-                </tr> --}}
+                </tr> 
             <?php $i++;?>
             
-            {{-- @endforeach --}}
+            @endforeach 
             
             
             </tbody>
@@ -175,7 +175,7 @@
             </thead>
             <tbody>
             <?php $i = 0;?>
-            {{-- 
+     
             @foreach($data['resultBobot'] as $item)
                 <tr class="table-<?php if($i%2==0) {
                     echo "secondary";
@@ -191,12 +191,12 @@
                     <td>{{ $item['Baterai']}}</td>
                     <td>{{ $item['Memori']}}</td>
                     <td>{{ $item['Prosesor']}}</td>
-                    {{-- <td>{{ $data['nilai'][0]['nprosesor']}}</td> --}}
-                    {{--<td>{{ $item['Kamera_Depan']}}</td>
+                    <td>{{ $data['nilai'][0]['nprosesor']}}</td> 
+                    <td>{{ $item['Kamera_Depan']}}</td>
                     <td>{{ $item['Sistem_Operasi']}}</td> 
-                </tr>--}}
+                </tr>
             <?php $i++;?>
-            {{-- @endforeach --}}
+            @endforeach 
             </tbody>
         </table>
         <h6 class="mt-4 mb-3">3. Normalisasi</h6>
@@ -218,7 +218,7 @@
             </thead>
             <tbody>
             <?php $i = 0;?>
-            {{-- 
+            
             @foreach($data['resultNormalisasi'] as $item)
                 <tr class="table-<?php if($i%2==0) {
                     echo "secondary";
@@ -234,12 +234,12 @@
                     <td>{{ $item['Baterai']}}</td>
                     <td>{{ $item['Memori']}}</td>
                     <td>{{ $item['Prosesor']}}</td>
-                    {{-- <td>{{ $data['nilai'][0]['nprosesor']}}</td> --}}
-                    {{-- <td>{{ $item['Kamera_Depan']}}</td>
+                    <td>{{ $data['nilai'][0]['nprosesor']}}</td> 
+                    <td>{{ $item['Kamera_Depan']}}</td>
                     <td>{{ $item['Sistem_Operasi']}}</td>
-                </tr> --}}
+                </tr> -
             <?php $i++;?>
-            {{-- @endforeach --}}
+            @endforeach 
             </tbody>
         </table>
         <h6 class="mt-4 mb-3">4. Hasil Pembobotan</h6>
@@ -253,7 +253,7 @@
             </thead>
             <tbody>
             <?php $i = 0;?>
-            {{-- 
+           
             @foreach($data['resultRanking'] as $item)
                 <tr class="table-<?php if($i%2==0) {
                     echo "secondary";
@@ -266,7 +266,7 @@
                 </tr>
             <?php $i++;?>
             @endforeach
-             --}}
+
             </tbody>
         </table>
         <h6 class="mt-4 mb-3">5. Ranking</h6>
@@ -280,7 +280,7 @@
             </thead>
             <tbody>
             <?php $i = 0;?>
-            {{-- 
+       
             @foreach($data['resultSAW'] as $item)
                 <tr class="table-<?php if($i%2==0) {
                     echo "secondary";
@@ -288,15 +288,15 @@
                     echo "light";
                 }?>">
                     <th scope="row">{{ $i+1 }}</th>
-                    <td> <a style="text-decoration:none; color:black;" href="/detail_handphone/{{$item['nama']}}">{{ str_replace('_',' ',$item['nama'])}}</a></td>
+                    <td> <a style="text-decoration:none; color:black;" href="/detail/{{$item['nama']}}">{{ str_replace('_',' ',$item['nama'])}}</a></td>
                     <td>{{ $item['total']}}</td>
                 </tr>
             <?php $i++;?>
             @endforeach
-             --}}
+             
             </tbody>
         </table>
-    {{-- @endif --}}
+     @endif 
 </form>
 
 <script>
