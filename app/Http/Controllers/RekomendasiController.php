@@ -1,495 +1,361 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
 class RekomendasiController extends Controller
 {
     public function rekomendasi(Request $request)
     {
-        
-        if(isset($_GET['rekomendasi']))
-        {
-            $resp=1;
-            //INPUTAN USER
-            $handphone = $this->getHandphone($request->cariUkuranLayar, $request->cariBaterai, $request->cariKamera, $request->cariHarga, $request->cariAplikasi);
-            $bobotUser = $this->getBobotUser($request->bobotKamera, $request->bobotHarga, $request->bobotUl, $request->bobotBaterai, $request->bobotAplikasi);
-            //END INPUTAN USER
-            $sql = $handphone[1];
-            $jumlahCari = count($handphone[0]);
-            if($jumlahCari == 0)
-            {
-                $resultSpesifikasi = [];
+        if (isset($_GET['rekomendasi'])) {
+            $resp = 1;
+            // Get request kriteria wisata & bobot kriteria wisata
+            $wisata = $this->getWahana($request->budget, $request->hargaWahana, $request->durasiSewa, $request->popularitas, $request->kecepatanAkses);
+            $bobotUser = $this->getBobotUser($request->bobotBudget, $request->bobotHargaWahana, $request->bobotDurasiSewa, $request->bobotPopularitas, $request->bobotKecepatanAkses);
+
+            // Get query & jumlahData 
+            $sql = $wisata[1];
+            $jumlahData = count($wisata[0]);
+
+            if ($jumlahData == 0) {
+                $resultDetailWisata = [];
                 $resultBobot = [];
                 $resultKriteria = [];
                 $resultNormalisasi = [];
                 $resultRanking = [];
-                $resultSAW =[];
-            }
-            else 
-            {
-                $resultSpesifikasi = $this->getSpesifikasi($handphone[0]);
-                $resultBobot = $this->getBobot($resultSpesifikasi);
+                $resultSAW = [];
+            } else {
+                $resultDetailWisata = $this->getDetailWisata($wisata[0]);
+                $resultBobot = $resultDetailWisata;
                 $resultKriteria = $this->getKriteria();
                 $resultNormalisasi = $this->getNormalisasi($resultBobot, $resultKriteria);
-                $resultRanking = $this->getHasil($resultNormalisasi, $resultKriteria, $bobotUser);
+                $resultRanking = $this->getHasil($resultNormalisasi, $bobotUser);
                 $resultSAW = $this->getRanking($resultRanking);
             }
-        }
-        else if(isset($_GET['reset']))
-        {
+        } else if (isset($_GET['reset'])) {
             header('Location: /rekomendasi');
             $resultBobot = [];
-            $resultSpesifikasi=[];
+            $resultDetailWisata = [];
             $resultKriteria = [];
             $resultNormalisasi = [];
             $resultRanking = [];
             $resultSAW = [];
-            $jumlahCari = 0;
+            $jumlahData = 0;
             $resp = 0;
             $sql = [];
-        }
-        else
-        {
-            $resultSpesifikasi = [];
+        } else {
+            $resultDetailWisata = [];
             $resultBobot = [];
             $resultKriteria = [];
             $resultNormalisasi = [];
             $resultRanking = [];
             $resultSAW = [];
-            $jumlahCari = 0;
+            $jumlahData = 0;
             $resp = 0;
             $sql = [];
         }
-
-        $rowAplikasi = $this->showAplikasi();
 
         $data = [
             'resp' => $resp,
-            'jumlahCari' => $jumlahCari,
-            'resultSpesifikasi' => $resultSpesifikasi,
+            'jumlahData' => $jumlahData,
+            'resultDetailWisata' => $resultDetailWisata,
             'resultBobot' => $resultBobot,
             'resultKriteria' => $resultKriteria,
             'resultNormalisasi' => $resultNormalisasi,
             'resultRanking' => $resultRanking,
             'resultSAW' => $resultSAW,
-            'rowAplikasi' => $rowAplikasi,
             'sql' => $sql
         ];
-        
+
         return view('rekomendasi', [
             'title' => 'Fitur Rekomendasi',
             'page' => 'rekomendasi',
+            'kriteria' => $this->getKriteriaDropdown(),
             'data' => $data
         ]);
     }
-    
-    public function getHandphone($ukuranKenyamanan,$lamaTravelling,$hobiFotografi,$budgetPembelian,$aplikasiSehari)
+
+    private function getKriteriaDropdown(): array
     {
-        $sql = 'SELECT * WHERE {?Kriteria a wisata:HargaSewaWahana';
-        $i = 0;
-        //Query untuk mencari ukuran kenyamanan
-        /*if($ukuranKenyamanan == '')
-        {
-            $sql = $sql;
-        }
-        else if ($ukuranKenyamanan == 'besar') 
-        {
-            $sql = $sql . '.?hp handphone:memilikiUkuranLayar ?ul .?ul handphone:nilaiUkuranLayar ?nilaiUl FILTER( ?nilaiUl >= 6.7 )';
-        } 
-        else if ($ukuranKenyamanan == 'sedang') 
-        {
-            $sql = $sql . '.?hp handphone:memilikiUkuranLayar ?ul .?ul handphone:nilaiUkuranLayar ?nilaiUl FILTER( ?nilaiUl >= 6.5 && ?nilaiUl < 6.7 )';
-        }
-        else 
-        {
-            $sql = $sql . '.?hp handphone:memilikiUkuranLayar ?ul .?ul handphone:nilaiUkuranLayar ?nilaiUl FILTER( ?nilaiUl < 6.5 )';
-        }*/
+        $listKriteria = [];
+        $listKriteria['listHargaSewa'] = [];
+        $listKriteria['listDurasiSewa'] = [];
+        $listKriteria['listKecepatanAkses'] = [];
+        $listKriteria['listPopularitas'] = [];
 
-        //Query untuk mencari lama travelling
-        /*if ($lamaTravelling != '')
-        {
-            $sql = $sql . '.?hp handphone:nilaiDayaTahan ?dayaTahan FILTER (?dayaTahan > ' . $lamaTravelling . ')';
-        }
-        else
-        {
-            $sql = $sql;
-        }*/
-
-        //Query untuk mencari hobi fotografi
-        /*if ($hobiFotografi == '') 
-        {
-            $sql = $sql;
-        } 
-        else if ($hobiFotografi == '0') 
-        {
-            $sql = $sql . '.?hp handphone:memilikiKameraBelakang ?kb .?kb handphone:nilaiKameraBelakang ?nilaiKb FILTER(?nilaiKb >= 48)';
-        } 
-        else if ($hobiFotografi == '1') 
-        {
-            $sql = $sql . '.?hp handphone:memilikiKameraDepan ?kd .?kd handphone:nilaiKameraDepan ?nilaiKd FILTER(?nilaiKd >= 20)';
-        } 
-        else if ($hobiFotografi == '2') 
-        {
-            $sql = $sql . '.?hp handphone:memilikiKameraBelakang ?kb.?hp handphone:memilikiKameraDepan ?kd .?kb handphone:nilaiKameraBelakang ?nilaiKb FILTER(?nilaiKb >= 48).?kd handphone:nilaiKameraDepan ?nilaiKd FILTER(?nilaiKd >= 20)';
-        } 
-        else if ($hobiFotografi == '3') {
-            $sql = $sql . '.?hp handphone:memilikiKameraBelakang ?kb.?kb handphone:nilaiKameraBelakang ?nilaiKb FILTER(?nilaiKb < 48)';
-        } 
-        else 
-        {
-            $sql = $sql . '.?hp handphone:memilikiKameraDepan ?kd. ?kd handphone:nilaiKameraDepan ?nilaiKd FILTER(?nilaiKd < 20)';
-        }*/
-
-        //Query untuk mencari budget pembelian
-        if($budgetPembelian == '')
-        {
-            $sql = $sql;
-        }
-        else 
-        {
-            $sql = $sql . '.?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana FILTER(?HargaSewaWahana < '.$budgetPembelian.')';
+        // Harga Sewa Wahana
+        $resultHargaSewaWahana = $this->sparql->query("SELECT * WHERE { ?hargaSewa a wisata:HargaSewaWahana ; wisata:HargaSewaWahana ?harga . }");
+        foreach ($resultHargaSewaWahana as $item) {
+            array_push($listKriteria['listHargaSewa'], [
+                'hargaSewa' => $this->parseData($item->hargaSewa->getUri()),
+                'value' => $item->harga->getValue()
+            ]);
         }
         
-        //Query untuk aplikasi sehari hari
-        /*if ($aplikasiSehari == '') 
-        {
-            $sql = $sql;
-        }
-        else
-        {
-            $aplikasi = $aplikasiSehari;
-            $rowapp = [];
-            foreach ($aplikasi as $item) {
-                array_push($rowapp, [
-                    'req' => $this->sparql->query('SELECT * WHERE{VALUES ?app {handphone:' . $item . '}.
-                            ?app handphone:minRAM ?minRAM.
-                            ?app handphone:minMemori ?minMemori.
-                            ?app handphone:minProsesor ?minProsesor.
-                            ?app handphone:minSistemOperasi ?minOS.
-                        }')
-                ]);
-            }
-
-            $minreq = [];
-            foreach ($rowapp as $item) {
-                array_push($minreq, [
-                    'minRAM' => $this->parseData($item['req'][0]->minRAM->getValue()),
-                    'minMemori' => $this->parseData($item['req'][0]->minMemori->getValue()),
-                    'minOS' => $this->parseData($item['req'][0]->minOS->getValue()),
-                    'minProsesor' => $this->parseData($item['req'][0]->minProsesor->getValue())
-                ]);
-            }
-            $sumMemori = 0;
-            for ($i = 0; $i < count($minreq); $i++) {
-                $sumMemori = $sumMemori + $minreq[$i]['minMemori'];
-            }
-
-            $minRequirement = max($minreq);
-            array_push($minRequirement, [
-                'sumMemori' => $sumMemori
-            ]);
-
-            $sql = $sql . '.?hp handphone:memilikiRAM ?ram .?ram handphone:nilaiRAM ?nilaiRAM FILTER(?nilaiRAM >= '.$minRequirement['minRAM']. ').?hp handphone:memilikiMemori ?memori .?memori handphone:nilaiMemori ?nilaiMemori FILTER(?nilaiMemori >= ' . $minRequirement[0]['sumMemori'] . ').?hp handphone:memilikiProsesor ?prosesor .?prosesor handphone:nilaiProsesor ?nilaiProsesor FILTER(?nilaiProsesor >= ' . $minRequirement['minProsesor'] . ').?hp handphone:memilikiSistemOperasi ?so .?so handphone:nilaiSistemOperasi ?nilaiSO FILTER(?nilaiSO >= ' . $minRequirement['minOS'] . ')';
-        }*/
-        $sql = $sql .'}';
-
-        //EksekusiQuery
-        $rowQuery=[];
-        $query = $this->sparql->query($sql);
-        foreach ($query as $item) {
-            array_push($rowQuery,[
-                'namaHandphone' => $this->parseData($item->ObjekWisata->getUri())
+        // Durasi Sewa Wahana
+        $resultDurasiSewaWahana = $this->sparql->query("SELECT * WHERE { ?durasiSewa a wisata:DurasiSewaWahana ; wisata:nilaiDurasiSewa ?durasi . }");
+        foreach ($resultDurasiSewaWahana as $item) {
+            array_push($listKriteria['listDurasiSewa'], [
+                'durasiSewa' => $this->parseData($item->durasiSewa->getUri()),
+                'value' => $item->durasi->getValue()
             ]);
         }
 
-        return [$rowQuery,$sql];
+        // Kecepatan Akses
+        $resultKecepatanAkses = $this->sparql->query("SELECT * WHERE { ?kecepatanAkses a wisata:KecepatanAkses ; wisata:nilaiKecepatanAkses ?kecepatan . }");
+        foreach ($resultKecepatanAkses as $item) {
+            array_push($listKriteria['listKecepatanAkses'], [
+                'kecepatanAkses' => $this->parseData($item->kecepatanAkses->getUri()),
+                'value' => $item->kecepatan->getValue()
+            ]);
+        }
 
+        // Popularitas
+        $resultPopularitas = $this->sparql->query("SELECT DISTINCT * WHERE { ?popularitas a wisata:Popularitas ; wisata:nilaiPopularitas ?nilaiPopularitas . } ORDER BY ?popularitas");
+        foreach ($resultPopularitas as $item) {
+            array_push($listKriteria['listPopularitas'], [
+                'popularitas' => str_replace('_', ' ', str_replace('Popularitas_', '', $this->parseData($item->popularitas->getUri()))),
+                'value' => $item->nilaiPopularitas->getValue(),
+            ]);
+        }
+        
+        return $listKriteria;
     }
 
-    public function getBobotUser($kamera, $harga, $ul, $baterai, $aplikasi)
+    public function getWahana($budget, $hargaWahana, $durasiSewa, $popularitas, $kecepatanAkses)
+    {
+        $sql = "SELECT ?wisata WHERE {
+            ?tipeWisata rdfs:subClassOf+ wisata:ObjekWisata .
+            ?wisata a ?tipeWisata .
+            ";
+
+        // Budget
+        if ($budget != null) {
+            $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+            ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
+            ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
+            FILTER ((?hargaTiketMasuk + ?hargaWahana) <= $budget) .";
+        }
+
+        // Harga Wahana
+        if ($hargaWahana != null) {
+            if ($budget != null) {
+                $sql = $sql . "FILTER (?hargaWahana <= $hargaWahana) .";
+            } else {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= $hargaWahana) .\n";
+            }
+        }
+
+        // Durasi Sewa
+        if ($durasiSewa != null) {
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= $durasiSewa) .\n";
+        }
+
+        // Popularitas
+        if ($popularitas != null) {
+            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
+            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
+            FILTER (?nilaiPopularitas <= $popularitas) .";
+        }
+
+        // Kecepatan Akses
+        if ($kecepatanAkses != null) {
+            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
+            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
+            FILTER (?kecepatanAkses <= $kecepatanAkses) .";
+        }
+
+        // Query closing
+        $sql = $sql . "}";
+        // dd($sql);
+
+        // EksekusiQuery
+        $rowQuery = [];
+        $query = $this->sparql->query($sql);
+
+        foreach ($query as $item) {
+            array_push($rowQuery, [
+                'wisata' => $this->parseData($item->wisata->getUri())
+            ]);
+        }
+
+        // dd($rowQuery, $sql);
+        return [$rowQuery, $sql];
+    }
+
+    public function getBobotUser($budget, $hargaWahana, $durasiSewa, $popularitas, $kecepatanAkses)
     {
         $bobotUser = [];
-        /*if ($baterai) {
-            array_push($bobotUser, [
-                'Baterai' => $baterai
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Baterai' => 1
-            ]);
-        }
-        if ($aplikasi) {
-            array_push($bobotUser, [
-                'Memori' => $aplikasi
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Memori' => 1
-            ]);
-        }
-        if ($aplikasi) {
-            array_push($bobotUser, [
-                'Prosesor' => $aplikasi
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Prosesor' => 1
-            ]);
-        }
-        if ($aplikasi) {
-            array_push($bobotUser, [
-                'RAM' => $aplikasi
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'RAM' => 1
-            ]);
-        }*/
-        if ($harga) {
-            array_push($bobotUser, [
-                'Harga' => $harga
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Harga' => 1
-            ]);
-        }
-        /*if ($kamera) {
-            array_push($bobotUser, [
-                'Kamera_Belakang' => $kamera
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Kamera_Belakang' => 1
-            ]);
-        }
-        if ($kamera) {
-            array_push($bobotUser, [
-                'Kamera_Depan' => $kamera
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Kamera_Depan' => 1
-            ]);
-        }
-        if ($aplikasi) {
-            array_push($bobotUser, [
-                'Sistem_Operasi' => $aplikasi
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Sistem_Operasi' => 1
-            ]);
-        }
-        if ($ul) {
-            array_push($bobotUser, [
-                'Ukuran_Layar' => $ul
-            ]);
-        } else {
-            array_push($bobotUser, [
-                'Ukuran_Layar' => 1
-            ]);
-        }*/
+
+        // Budget
+        $bobotUser['budget'] = $budget ? (int) $budget : 1;
+
+        // Harga Wahana
+        $bobotUser['hargaSewaWahana'] = $hargaWahana ? (int) $hargaWahana : 1;
+
+        // Durasi Sewa
+        $bobotUser['durasiSewaWahana'] = $durasiSewa ? (int) $durasiSewa : 1;
+
+        // Popularitas
+        $bobotUser['popularitas'] = $popularitas ? (int) $popularitas : 1;
+
+        // Kecepatan Akses
+        $bobotUser['kecepatanAkses'] = $kecepatanAkses ? (int) $kecepatanAkses : 1;
 
         return $bobotUser;
     }
 
-    public function showAplikasi()
+    private function getKriteria()
     {
-        $resultquery=[];
-        $resultsql = $this->sparql->query('SELECT * WHERE {?Kriteria a wisata:HargaSewaWahana} ORDER BY ?Kriteria');
-        foreach($resultsql as $item){
-            array_push($resultquery,[
-                'aplikasi' => $this->parseData($item->Kriteria->getUri())
-            ]);
-        }
+        $kriteria = [
+            'tiketMasuk',
+            'parkirMobil',
+            'parkirMotor',
+            'hargaSewaWahana',
+            'budget',
+            'durasiSewaWahana',
+            'kecepatanAkses',
+            'popularitas',
+            /* Add more if needed! */
+        ];
 
-        return $resultquery;
-    }
-    
-    public function getSpesifikasi($data)
-    {
-        $queryData = [];
-        $jumlahData = count($data);
-        for ($x = 0; $x < $jumlahData; $x++) {
-            array_push($queryData, [
-                'data' => $this->sparql->query('SELECT * WHERE {VALUES ?ObjekWisata {wisata:' . $data[$x]['namaHandphone'] . '}
-                
-                .?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana
-                
-            } ')
-            ]);
-        }
-        $resultData = [];
-        foreach ($queryData as $item) {
-            array_push($resultData, [
-                'nama' => $this->parseData($item['data'][0]->ObjekWisata->getUri()),
-                'harga' => $this->parseData($item['data'][0]->HargaSewaWahana->getValue()),
-                /*'ukuranlayar' => $this->parseData($item['data'][0]->ul->getUri()),
-                'ram' => $this->parseData($item['data'][0]->ram->getUri()),
-                'kb' => $this->parseData($item['data'][0]->kb->getUri()),
-                'baterai' => $this->parseData($item['data'][0]->baterai->getUri()),
-                'nbaterai' => $this->parseData($item['data'][0]->nilaibaterai->getValue()),
-                'memori' => $this->parseData($item['data'][0]->memori->getUri()),
-                'kd' => $this->parseData($item['data'][0]->kd->getUri()),
-                'prosesor' => $this->parseData($item['data'][0]->prosesor->getUri()),
-                'so' => $this->parseData($item['data'][0]->so->getUri()),
-                */
-            ]);
-        }
-
-        return $resultData;
+        return $kriteria;
     }
 
-    public function getKriteria ()
+    private function getDetailWisata($list)
     {
-        $resultQuery = [];
-        $query = $this->sparql->query('SELECT * WHERE {?Kriteria wisata:HargaSewaWahana ?HargaSewaWahana}');
+        $resultWisata = [];
 
-        foreach($query as $item){
-            array_push($resultQuery, [
-                'kriteria' =>$this->parseData($item->Kriteria->getUri()) 
-            ]);
-        }
+        foreach ($list as $item) {
+            $result = $this->sparql->query("SELECT * WHERE {
+                VALUES ?wisata { wisata:" . $item['wisata'] . " } .
+                ?wisata a ?jenis .
+                ?jenis rdfs:subClassOf wisata:ObjekWisata .          
+                OPTIONAL { ?wisata wisata:memilikiGambar ?gambar } .
+                OPTIONAL { 
+                    ?wisata wisata:isLocatedAt ?banjar .
+                    ?banjar wisata:isPartOf ?desa .
+                    ?desa wisata:isPartOf ?kecamatan .
+                    ?kecamatan wisata:isPartOf ?kabupaten .
+                }
+                OPTIONAL { ?wisata wisata:memilikiJamBuka ?jamBuka } .
+                OPTIONAL { ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk } .
+                OPTIONAL { ?wisata wisata:memilikiHargaSewaWahana ?hargaSewaWahana } .
+                OPTIONAL { 
+                    ?wisata wisata:HargaSewaWahana ?hargaWahana .
+                    ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
+                    ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
+                    BIND (?hargaTiketMasuk + ?hargaWahana AS ?budget) . 
+                }
+                OPTIONAL { ?wisata wisata:memilikiKecepatanAkses ?kecepatanAkses } .
+                OPTIONAL { ?wisata wisata:memilikiDurasiSewa ?durasiSewaWahana } .
+                OPTIONAL { ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil } .
+                OPTIONAL { ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor } .
+                OPTIONAL { ?wisata wisata:memilikiPopularitas ?popularitas } .
+            }");
 
-        return $resultQuery;
-    }
-
-    public function getBobot ($bobot)
-    {
-        $queryNilai = [];
-        $jumlahData = count($bobot);
-        for ($x = 0; $x < $jumlahData; $x++) {
-            array_push($queryNilai, [
-                // 'nilaiprosesor' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $resultdata[$x]['prosesor'] . '}.?hp handphone:nilai_Prosesor ?prosesor}')
-                /*'nilaiprosesor' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['prosesor'].'}.?hp handphone:nilaiProsesor ?prosesor}'),
-                'nilairam' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['ram'] . '}.?hp handphone:nilaiRAM ?ram}'),
-                'nilaiukuranlayar' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['ukuranlayar'] . '}.?hp handphone:nilaiUkuranLayar ?ul}'),
-                'nilaikb' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['kb'] . '}.?hp handphone:nilaiKameraBelakang ?kb}'),
-                'nilaibaterai' => $bobot[$x]['nbaterai'],
-                'nilaimemori' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['memori'] . '}.?hp handphone:nilaiMemori ?memori}'),
-                'nilaikd' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['kd'] . '}.?hp handphone:nilaiKameraDepan ?kd}'),
-                'nilaiso' => $this->sparql->query('SELECT * WHERE {VALUES ?hp {handphone:' . $bobot[$x]['so'] . '}.?hp handphone:nilaiSistemOperasi ?so}'),
-                */
-                'nilaiharga' => $bobot[$x]['harga'],
-                'nama' => $bobot[$x]['nama']
-            ]);
+            if ($result->numRows() > 0) {
+                array_push($resultWisata, [
+                    'nama' => str_replace('_',' ',$this->parseData($result[0]->wisata->getUri())),
+                    'jenis' => property_exists($result[0], 'jenis') ? preg_replace("/([a-z])([A-Z])/s", "$1 $2", $this->parseData($result[0]->jenis->getUri())) : null,
+                    'banjar' => property_exists($result[0], 'banjar') ? str_replace('Banjar_', '', $this->parseData($result[0]->banjar->getUri())) : null,
+                    'desa' => property_exists($result[0], 'desa') ? str_replace('Desa_', '', $this->parseData($result[0]->desa->getUri())) : null,
+                    'kecamatan' => property_exists($result[0], 'kecamatan') ? str_replace('Kecamatan_', '', $this->parseData($result[0]->kecamatan->getUri())) : null,
+                    'kabupaten' => property_exists($result[0], 'kabupaten') ? str_replace('Kabupaten_', '', $this->parseData($result[0]->kabupaten->getUri())) : null,
+                    'jamBuka' => property_exists($result[0], 'jamBuka') ? str_replace('Jam_', '', $this->parseData($result[0]->jamBuka->getUri())) : null,
+                    'gambar' => property_exists($result[0], 'gambar') ? $this->parseData($result[0]->gambar->getValue()) : null,
+                    'tiketMasuk' => property_exists($result[0], 'tiketMasuk') ? str_replace('Harga_Tiket_', '', $this->parseData($result[0]->tiketMasuk->getUri())) : null,
+                    'hargaSewaWahana' => property_exists($result[0], 'hargaSewaWahana') ? str_replace('Harga_Sewa_', '', $this->parseData($result[0]->hargaSewaWahana->getUri())) : null,
+                    'budget' => property_exists($result[0], 'budget') ? $this->parseData($result[0]->budget->getValue()) : null,
+                    'kecepatanAkses' => property_exists($result[0], 'kecepatanAkses') ? explode('_', $this->parseData($result[0]->kecepatanAkses->getUri()))[2] : null,
+                    'durasiSewaWahana' => property_exists($result[0], 'durasiSewaWahana') ? explode('_', $this->parseData($result[0]->durasiSewaWahana->getUri()))[1] : null,
+                    'parkirMobil' => property_exists($result[0], 'parkirMobil') ? str_replace('Harga_Parkir_', '', $this->parseData($result[0]->parkirMobil->getUri())) : null,
+                    'parkirMotor' => property_exists($result[0], 'parkirMotor') ? str_replace('Harga_Parkir_', '', $this->parseData($result[0]->parkirMotor->getUri())) : null,
+                    'popularitas' => property_exists($result[0], 'popularitas') ? str_replace('Popularitas_Bintang_', '', $this->parseData($result[0]->popularitas->getUri())) : null,
+                ]);
+            }
         }
-        $nilai = [];
-        foreach ($queryNilai as $item) {
-            array_push($nilai, [
-                /*'Prosesor' => $this->parseData($item['nilaiprosesor'][0]->prosesor->getValue()),
-                'RAM' => $this->parseData($item['nilairam'][0]->ram->getValue()),
-                'Ukuran_Layar' => $this->parseData($item['nilaiukuranlayar'][0]->ul->getValue()),
-                'Kamera_Belakang' => $this->parseData($item['nilaikb'][0]->kb->getValue()),
-                'Baterai' => $item['nilaibaterai'],
-                'Memori' => $this->parseData($item['nilaimemori'][0]->memori->getValue()),
-                'Kamera_Depan' => $this->parseData($item['nilaikd'][0]->kd->getValue()),
-                'Sistem_Operasi' => $this->parseData($item['nilaiso'][0]->so->getValue()),
-                */
-                'Harga' => $item['nilaiharga'],
-                'nama' => $item['nama']
-            ]);
-        }
-        return $nilai;
+        
+        // dd($resultWisata);
+        return $resultWisata;
     }
 
     public function getNormalisasi($data, $kriteria)
     {
-        $jumlahData = count($data);
+        $resultNormalization = [];
 
-        //inisialisasi array masing-masing nilai
-        for($i=0;$i<count($kriteria);$i++)
-        {
-            for($j=0;$j<$jumlahData;$j++)
-            {
-                $bobot[$kriteria[$i]['kriteria']][$j] = $data[$j][$kriteria[$i]['kriteria']];
-            }
-        }
+        // dd($data, $kriteria);
 
-        //menentukan maksimum dan minimum masing-masing nilai
-        for ($i = 0; $i < count($kriteria); $i++)
-        {
-            if($kriteria[$i]['kriteria']=='Harga'){
-                $maxMin[$kriteria[$i]['kriteria']] = min($bobot[$kriteria[$i]['kriteria']]);
-            }
-            else
-            {
-                $maxMin[$kriteria[$i]['kriteria']] = max($bobot[$kriteria[$i]['kriteria']]);
-            }
-        }
-        
-        //melakukan perhitungan minimum dan maksimum
-        for ($i = 0 ; $i < count($kriteria) ; $i++)
-        {
-            for($j = 0 ; $j < $jumlahData ; $j++)
-            {
-                if ($kriteria[$i]['kriteria'] == 'Harga') 
-                {
-                    $normal[$j][$kriteria[$i]['kriteria']] = round($maxMin[$kriteria[$i]['kriteria']]/$bobot[$kriteria[$i]['kriteria']][$j],3);
-                }
-                else{
-                    $normal[$j][$kriteria[$i]['kriteria']] = round($bobot[$kriteria[$i]['kriteria']][$j] / $maxMin[$kriteria[$i]['kriteria']],3);
+        // Mencari nilai max tiap kriteria
+        $listMax = null;
+        foreach ($kriteria as $k) {
+            $max = 0;
+            foreach ($data as $item) {
+                if ($item[$k] > $max) {
+                    $max = $item[$k];
                 }
             }
+            $listMax[$k] = $max;
         }
-        for ($i = 0; $i < $jumlahData ; $i++){
-            $normal[$i]['nama'] = $data[$i]['nama']; 
+
+        // Melakukan perhitungan normalisasi
+        // Rumus : Norm(x) = nilai(x) / max(x)
+        foreach ($data as $item) {
+            $itemNorm = [];
+            $itemNorm['nama'] = $item['nama'];
+            foreach ($kriteria as $k) {
+                if ($item[$k] > 0) {
+                    $itemNorm[$k] = $item[$k] / $listMax[$k];
+                } else {
+                    $itemNorm[$k] = 0;
+                }
+            }
+            array_push($resultNormalization, $itemNorm);
         }
-        return $normal;
+
+        return $resultNormalization;
     }
 
-    public function getHasil($data, $kriteria, $bobotUser)
+    public function getHasil($data, $bobot)
     {
-        for($i=0;$i<count($kriteria);$i++)
-        {
-            for($j=0;$j<count($data);$j++)
-            {
-                $hasilKali[$j][$kriteria[$i]['kriteria']] = $data[$j][$kriteria[$i]['kriteria']] * $bobotUser[$i][$kriteria[$i]['kriteria']];
-            }
-        }
-        $tempTotal = 0 ;
-        for($i=0 ; $i<count($data) ; $i++)
-        {
-            for($j=0; $j<count($kriteria) ; $j++)
-            {
-                $tempTotal = $tempTotal + $hasilKali[$i][$kriteria[$j]['kriteria']];
-            }
-            $total[$i]['total'] = $tempTotal; 
-            $tempTotal = 0;
-        }
-        for ($i = 0; $i < count($data); $i++) {
-            $total[$i]['nama'] = $data[$i]['nama'];
-        }
-
-        return $total;
-    }
-
-    public function getRanking($data)
-    {
-        
         $hasil = [];
+        // dd($data, $bobot, $kriteria);
 
-        //melakukan sorting dengan menggunakan bubblesort
-        for ($i = 0; $i < count($data); $i++) 
-        {
-            for ($j = 0; $j < count($data)-1; $j++) 
-            {
-                if($data[$j]['total'] < $data[$j+1]['total']){
+        // Menjumlahkan hasil normalisasi
+        foreach ($data as $item) {
+            $totalBobot = 0;
+            foreach ($bobot as $key => $value) {
+                $totalBobot += $item[$key] * $value;
+            }
+            array_push($hasil, [
+                'nama' => $item['nama'],
+                'bobot' => $totalBobot
+            ]);
+        }
 
-                    $tempNilai = $data[$j]['total'];
-                    $data[$j]['total'] = $data[$j+1]['total'];
-                    $data[$j+1]['total'] = $tempNilai;
+        // dd($hasil);
+        return $hasil;
+    }
 
-                    $tempNama = $data[$j]['nama'];
-                    $data[$j]['nama'] = $data[$j + 1]['nama'];
-                    $data[$j + 1]['nama'] = $tempNama;
+    private function getRanking($data)
+    {
+        $n = sizeof($data);
+        
+        for ($i = 0; $i < $n; $i++) {
+            for ($j = 0; $j < $n - $i - 1; $j++) {
+                // Swap if element found is less
+                if ($data[$j]['bobot'] < $data[$j+1]['bobot']) {
+                    $temp = $data[$j];
+                    $data[$j] = $data[$j+1];
+                    $data[$j+1] = $temp;
                 }
             }
         }
 
         return $data;
     }
-        
-} 
-?>
+}

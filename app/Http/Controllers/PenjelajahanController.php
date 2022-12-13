@@ -202,43 +202,26 @@ class PenjelajahanController extends Controller
                 ]);
             }*/
             $sql= 'SELECT * WHERE {
-                ?ObjekWisata wisata:memilikiBanjar ?'.$jelajah.' .
-                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
-                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                ?wisata wisata:isLocatedAt wisata:'.$jelajah.' .
+                ?wisata wisata:memilikiGambar ?memilikiGambar. 
+                ?wisata wisata:HargaSewaWahana ?HargaSewaWahana.
                 }';
             $wisata = $this->sparql->query($sql);
             
         }
-        else if($kriteria == 'Desa'){
+        else{
             $sql= 'SELECT * WHERE {
-                ?ObjekWisata wisata:memilikiDesa ?'.$jelajah.' .
-                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
-                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
+                ?wisata wisata:isPartOf wisata:'.$jelajah.' .
+                ?wisata wisata:memilikiGambar ?memilikiGambar. 
+                ?wisata wisata:HargaSewaWahana ?HargaSewaWahana.
                 }';
             $wisata = $this->sparql->query($sql);  
         }
-        else if($kriteria == 'Kecamatan'){
-            $sql= 'SELECT * WHERE {
-                ?ObjekWisata wisata:memilikiKecamatan ?'.$jelajah.' .
-                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
-                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
-                }';
-            $wisata = $this->sparql->query($sql);  
-        }
-        else {
-            $sql= 'SELECT * WHERE {
-                ?ObjekWisata wisata:memilikiKabupaten ?'.$jelajah.' .
-                ?ObjekWisata wisata:memilikiGambar ?memilikiGambar. 
-                ?ObjekWisata wisata:HargaSewaWahana ?HargaSewaWahana.
-                }';
-            $wisata = $this->sparql->query($sql);
-        }
-        
         
         $resultWisata = [];
         foreach ($wisata as $item) {
             array_push($resultWisata, [
-                'nama' => $this->parseData($item->ObjekWisata->getUri()),
+                'nama' => $this->parseData($item->wisata->getUri()),
                 'gambar' => $this->parseData($item->memilikiGambar->getValue()),
                 'harga' => $this->parseData($item->HargaSewaWahana->getValue())
             ]);

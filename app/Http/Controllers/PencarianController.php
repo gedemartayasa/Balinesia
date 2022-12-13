@@ -8,7 +8,7 @@ class PencarianController extends Controller
 {
     public function searching (Request $request)
     {
-        //$jenisWisata = $this -> sparql -> query('SELECT * WHERE{?ObjekWisata a wisata:WisataOlahragaAir} ORDER BY ?WisataOlahragaAir');
+        $jenisWisata = $this -> sparql -> query('SELECT * WHERE{?jenis rdfs:subClassOf wisata:ObjekWisata} ORDER BY ?jenis');
         $jamBuka = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:JamBuka} ORDER BY ?JamBuka');
         $hargaTiket = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:HargaTiketMasuk} ORDER BY ?HargaTiketMasuk');
         $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana} ORDER BY ?HargaSewaWahana');
@@ -25,7 +25,7 @@ class PencarianController extends Controller
         }');*/
 
 
-        //$resultRAM=[];
+        $resultJenis=[];
         $resultJamBuka=[];
         $resultHargaTiket = [];
         $resultHargaSewa = [];
@@ -34,11 +34,11 @@ class PencarianController extends Controller
         //$resultSistemOperasi = [];
         //$resultUkuranLayar = [];
 
-        /*foreach($ram as $item){
-            array_push($resultRAM, [
-                'ram' => $this->parseData($item->ram->getUri())
+        foreach($jenisWisata as $item){
+            array_push($resultJenis, [
+                'jenis' => $this->parseData($item->jenis->getUri())
             ]);
-        }*/
+        }
         foreach ($jamBuka as $item) {
             array_push($resultJamBuka, [
                 'jamBuka' => $this->parseData($item->Kriteria->getUri())
@@ -80,18 +80,18 @@ class PencarianController extends Controller
             $resp = 1;
             $sql = 'SELECT * WHERE {';
             $i = 0;
-            /*if($request->cariRAM != ''){
+            if($request->cariJenis != ''){
                 if ( $i == 0 ){
-                    $sql = $sql . '?hp handphone:memilikiRAM handphone:' . $request->cariRAM;
+                    $sql = $sql . '?wisata a ?jenis .?jenis rdfs:subClassOf wisata:' . $request->cariJenis;
                     $i++;
                 }
                 else{
-                    $sql = $sql . '. ?hp handphone:memilikiRAM handphone:' . $request->cariRAM;
+                    $sql = $sql . '. ?wisata a ?jenis .?jenis rdfs:subClassOf wisata:' . $request->cariJenis;
                 }
             }
             else{
                 $sql = $sql;
-            }*/
+            }
             if ($request->cariJamBuka!= '') {
                 if ($i == 0) {
                     $sql = $sql . '?ObjekWisata wisata:memilikiJamBuka wisata:' . $request->cariJamBuka;
@@ -214,7 +214,7 @@ class PencarianController extends Controller
         }
         
         $data = [
-            //'listRAM' => $resultRAM,
+            'listJenisWisata' => $resultJenis,
             'listJamBuka' => $resultJamBuka,
             'listHargaTiket' => $resultHargaTiket,
             'listHargaSewa' => $resultHargaSewa,

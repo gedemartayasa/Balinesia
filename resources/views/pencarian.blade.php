@@ -13,13 +13,11 @@
                 <div class="col-md-4">
                     <div class="input-group mb-3" >
                         <label class="input-group-text">Jenis Wisata</label>
-                        <select class="form-select" aria-label="Default select example" id="cariDurasi" name="cariDurasi">
+                        <select class="form-select" aria-label="Default select example" id="cariJenis" name="cariJenis">
                             <option value="">Pilihlah salah satu</option>
-                            {{--
-                            @foreach($data['rowDurasi'] as $item)
-                                <option value="{{ $item['nama'] }}">{{ str_replace('_',' ',$item['nama'])}}</option>
+                            @foreach($data['listJenisWisata'] as $item)
+                                <option value="{{ $item['jenis'] }}">{{ str_replace('_',' ',$item['jenis'])}}</option>
                             @endforeach
-                            --}}
                         </select>
                     </div>
                 </div>
