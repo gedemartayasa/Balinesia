@@ -31,15 +31,15 @@
             </div>
         </div>
     </div>
-@foreach($data['listWisata'] as $hp)
+@foreach($data['listWisata'] as $wisata)
     <div class="col-lg-3 col-md-6 col-sm-6 mb-2 justify-content-center">
         <div class="card">
-            <img src="{{ asset('img/'.$hp['gambar'])}}" class="card-img-top" alt="..." style="width:248,1px; height:200px; margin: auto;">
+            <img src="{{ asset('img/'.$wisata['gambar'])}}" class="card-img-top" alt="..." style="width:248,1px; height:200px; margin: auto;">
             <div class="card-body">
-                <h5 class="card-title">{{ str_replace('_',' ',$hp['nama'])  }}</h5>
-                <?php $nama_wisata = str_replace(' ','_',$hp['nama']) ?>
-                <p class="card-text">{{  $hp['harga'] }}</p>
-                <a href="/detail/{{$hp['nama']}}" class="btn btn-primary">Detail</a>
+                <h5 class="card-title">{{ str_replace('_',' ',$wisata['nama'])  }}</h5>
+                <?php $nama_wisata = str_replace(' ','_',$wisata['nama']) ?>
+                <p class="card-text">{{  $wisata['harga'] }}</p>
+                <a href="/detail/{{$wisata['nama']}}" class="btn btn-primary">Detail</a>
             </div>
         </div>
     </div>

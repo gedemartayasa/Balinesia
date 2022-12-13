@@ -11,45 +11,45 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        /*$data=$this->showCardHandphone(1000);
+        $data=$this->showCardWisata(1000);
         $totalData=count($data);
-        $dataHandphone = $this->paginate($data)->withQueryString()->withPath('/dashboard');*/
+        $dataWisata = $this->paginate($data)->withQueryString()->withPath('/dashboard');
         return view('dashboard', [
             "title" => 'Dashboard',
             "page" => "dashboard",
-            /*"handphone" => $data,
-            "dataHandphone" => $dataHandphone,
-            "count" => $totalData*/
+            "wisata" => $data,
+            "dataWisata" => $dataWisata,
+            "count" => $totalData
         ]);
     }
 
     public function landingPage()
     {
-        /*$data = $this->showCardHandphone(8);
-        $totalData = count($data);*/
+        $data = $this->showCardWisata(8);
+        $totalData = count($data);
         return view('main', [
             "title" => 'BALINESIA',
             "page" => "balinesia",
-            /*"handphone" => $data,
-            "count" => $totalData*/
+            "wisata" => $data,
+            "count" => $totalData
         ]);
     }
 
-    /*public function showCardHandphone($limit)
+    public function showCardWisata($limit)
     {
-        $handphone = $this->sparql->query('SELECT * WHERE{?hp a handphone:Handphone .?hp handphone:nilaiHarga ?harga .?hp handphone:memilikiGambar ?gambar}ORDER BY ?hp LIMIT '.$limit.'');
+        $wisata = $this->sparql->query('SELECT * WHERE{?wisata wisata:memilikiGambar ?memilikiGambar. ?wisata wisata:HargaSewaWahana ?HargaSewaWahana } ORDER BY ?wisata LIMIT '.$limit.'');
         $result = [];
-        foreach ($handphone as $hp) {
+        foreach ($wisata as $hp) {
             array_push($result, [
-                'nama_handphone' => $this->parseData($hp->hp->getUri()),
-                'harga' => $this->parseData($hp->harga->getValue()),
-                'gambar' => $this->parseData($hp->gambar->getValue())
+                'nama' => $this->parseData($hp->wisata->getUri()),
+                'harga' => $this->parseData($hp->HargaSewaWahana->getValue()),
+                'gambar' => $this->parseData($hp->memilikiGambar->getValue())
             ]);
         }
         return $result;
-    }*/
+    }
 
-    /*public function paginate($items, $perPage = 12, $page = null, $options = [])
+    public function paginate($items, $perPage = 12, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
@@ -60,6 +60,6 @@ class DashboardController extends Controller
             $page,
             $options
         );
-    }*/
+    }
 }
 ?>
