@@ -180,13 +180,13 @@ class PencarianController extends Controller
                     $sql = $sql . '?wisata wisata:HargaSewaWahana ?hargaWahana .
                     ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <'. $request->cariHarga.')';
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <='. $request->cariHarga.')';
                     $i++;
                 } else {
                     $sql = $sql . '?wisata wisata:HargaSewaWahana ?hargaWahana .
                     ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <'. $request->cariHarga.')';
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <='. $request->cariHarga.')';
                 }
             } else {
                 $sql = $sql;

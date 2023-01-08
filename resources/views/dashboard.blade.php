@@ -20,13 +20,13 @@
 </div>
 <div class="row">
 @foreach($dataWisata as $wisata)
-    <div class="col-lg-3 col-md-6 col-sm-6 mb-2 justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-6 mb-2 justify-content-center">
         <div class="card">
-            <img src="{{ asset('img/'.$wisata['gambar'])}}" class="card-img-top" alt="..." style="width:248,1px; height:200px; margin: auto;">
+            <img src="{{ asset('img/image/'.$wisata['gambar'])}}" class="card-img-top" alt="..." style="width:250, 1px; height:190px; margin: auto;">
             <div class="card-body">
                 <h5 class="card-title">{{ str_replace('_',' ',$wisata['nama'])  }}</h5>
                 <?php $nama_wisata = str_replace(' ','_',$wisata['nama']) ?>
-                <p class="card-text">{{  $wisata['harga'] }}</p>
+                <p class="card-text"><span>Rp. </span>{{  $wisata['harga'] }}</p>
                 <a href="/detail/{{$wisata['nama']}}" class="btn btn-primary">Detail</a>
             </div>
         </div>

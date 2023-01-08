@@ -263,8 +263,8 @@ class RekomendasiController extends Controller
                     'nama' => str_replace('_',' ',$this->parseData($result[0]->wisata->getUri())),
                     'jenis' => property_exists($result[0], 'jenis') ? preg_replace("/([a-z])([A-Z])/s", "$1 $2", $this->parseData($result[0]->jenis->getUri())) : null,
                     'banjar' => property_exists($result[0], 'banjar') ? str_replace('Banjar_', '', $this->parseData($result[0]->banjar->getUri())) : null,
-                    'desa' => property_exists($result[0], 'desa') ? str_replace('Desa_', '', $this->parseData($result[0]->desa->getUri())) : null,
-                    'kecamatan' => property_exists($result[0], 'kecamatan') ? str_replace('Kecamatan_', '', $this->parseData($result[0]->kecamatan->getUri())) : null,
+                    'desa' => property_exists($result[0], 'desa') ? str_replace('_', ' ', $this->parseData($result[0]->desa->getUri())) : null,
+                    'kecamatan' => property_exists($result[0], 'kecamatan') ? str_replace('_', ' ', $this->parseData($result[0]->kecamatan->getUri())) : null,
                     'kabupaten' => property_exists($result[0], 'kabupaten') ? str_replace('Kabupaten_', '', $this->parseData($result[0]->kabupaten->getUri())) : null,
                     'jamBuka' => property_exists($result[0], 'jamBuka') ? str_replace('Jam_', '', $this->parseData($result[0]->jamBuka->getUri())) : null,
                     'gambar' => property_exists($result[0], 'gambar') ? $this->parseData($result[0]->gambar->getValue()) : null,
@@ -282,6 +282,7 @@ class RekomendasiController extends Controller
         
         // dd($resultWisata);
         return $resultWisata;
+
     }
 
     public function getNormalisasi($data, $kriteria)

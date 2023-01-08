@@ -17,7 +17,7 @@
                     <select class="form-control" aria-label="Default select example" id="hargaWahana" name="hargaWahana">
                         <option value="">Pilihlah salah satu</option>
                         @foreach ($kriteria['listHargaSewa'] as $item)
-                            <option value="{{ $item['value'] }}">{{ str_replace('_', ' ', $item['hargaSewa']) }}</option>
+                            <option value="{{ $item['value'] }}"><span>Rp. </span>{{ str_replace('Harga_Sewa_', ' ', $item['hargaSewa']) }}</option>
                         @endforeach
                     </select>
                 </div>

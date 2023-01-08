@@ -38,7 +38,7 @@
                         <select class="form-select" aria-label="Default select example"id="cariHargaTiket" name="cariHargaTiket">
                             <option value="">Pilihlah salah satu</option>
                             @foreach($data['listHargaTiket'] as $item)
-                                <option value="{{ $item['hargaTiket'] }}">{{ str_replace('_',' ',$item['hargaTiket'])}}</option>
+                                <option value="{{ $item['hargaTiket'] }}"><span>Rp. </span>{{ str_replace('Harga_Tiket_',' ',$item['hargaTiket'])}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -51,7 +51,7 @@
                         <select class="form-select" aria-label="Default select example"id="cariHargaSewa" name="cariHargaSewa">
                             <option value="">Pilihlah salah satu</option>
                             @foreach($data['listHargaSewa'] as $item)
-                                <option value="{{ $item['hargaSewa'] }}">{{ str_replace('_',' ',$item['hargaSewa'])}}</option>
+                                <option value="{{ $item['hargaSewa'] }}"><span>Rp. </span>{{ str_replace('Harga_Sewa_',' ',$item['hargaSewa'])}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -62,7 +62,7 @@
                         <select class="form-select" aria-label="Default select example" id="cariHargaParkirMotor" name="cariHargaParkirMotor">
                             <option value="">Pilihlah salah satu</option>
                             @foreach($data['listHargaParkirMotor'] as $item)
-                                <option value="{{ $item['hargaParkirMotor'] }}">{{ str_replace('_',' ',$item['hargaParkirMotor']) }}</option>
+                                <option value="{{ $item['hargaParkirMotor'] }}"><span>Rp. </span>{{ str_replace('Harga_Parkir_',' ',$item['hargaParkirMotor']) }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -73,7 +73,7 @@
                         <select class="form-select" aria-label="Default select example" id="cariHargaParkirMobil" name="cariHargaParkirMobil">
                             <option value="">Pilihlah salah satu</option>
                             @foreach($data['listHargaParkirMobil'] as $item)
-                            <option value="{{ $item['hargaParkirMobil'] }}">{{ str_replace('_',' ',$item['hargaParkirMobil']) }}</option>
+                            <option value="{{ $item['hargaParkirMobil'] }}"><span>Rp. </span>{{ str_replace('Harga_Parkir_',' ',$item['hargaParkirMobil']) }}</option>
                             @endforeach
                         </select>
                     </div>
