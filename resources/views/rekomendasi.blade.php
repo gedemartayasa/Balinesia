@@ -252,7 +252,7 @@
                         <tr class="table-{{ $index % 2 == 0 ? 'secondary' : 'light' }}">
                             <th scope="row">{{ $index + 1 }}</th>
                             <td> <a style="text-decoration:none; color:black;"
-                                    href="/detail/{{ $item['nama'] }}">{{ $item['nama'] }}</a>
+                                    href="/detail/{{str_replace(' ', '_', $item['nama']) }}">{{ $item['nama'] }}</a>
                             </td>
                             <td>{{ $item['bobot'] }}</td>
                         </tr>
