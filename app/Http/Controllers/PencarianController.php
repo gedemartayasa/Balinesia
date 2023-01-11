@@ -14,16 +14,6 @@ class PencarianController extends Controller
         $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana} ORDER BY ?HargaSewaWahana');
         $hargaParkirMotor =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMotor} ORDER BY ?HargaParkirMotor');
         $hargaParkirMobil =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMobil} ORDER BY ?HargaParkirMobil');
-        //$ukuranLayar =$this->sparql->query('SELECT * WHERE{?ukuranLayar a handphone:UkuranLayar}ORDER BY ?ukuranLayar');
-
-        //prosesor
-        /*$prosesor = $this->sparql->query('SELECT * WHERE {
-            {?prosesor a handphone:Exynos}
-            UNION {?prosesor a handphone:MediaTek}
-            UNION {?prosesor a handphone:Qualcomm}
-            UNION {?prosesor a handphone:Kirin}
-        }');*/
-
 
         $resultJenis=[];
         $resultJamBuka=[];
@@ -31,8 +21,6 @@ class PencarianController extends Controller
         $resultHargaSewa = [];
         $resultHargaParkirMotor = [];
         $resultHargaParkirMobil = [];
-        //$resultSistemOperasi = [];
-        //$resultUkuranLayar = [];
 
         foreach($jenisWisata as $item){
             array_push($resultJenis, [
@@ -65,16 +53,6 @@ class PencarianController extends Controller
                 'hargaParkirMobil' => $this->parseData($item->Kriteria->getUri())
             ]);
         }
-        /*foreach ($ukuranLayar as $item) {
-            array_push($resultUkuranLayar, [
-                'ukuranLayar' => $this->parseData($item->ukuranLayar->getUri())
-            ]);
-        }
-        foreach ($prosesor as $item) {
-            array_push($resultProsesor, [
-                'prosesor' => $this->parseData($item->prosesor->getUri())
-            ]);
-        }*/
         
         if(isset($_GET['cariWisata'])){
             $resp = 1;
@@ -82,11 +60,11 @@ class PencarianController extends Controller
             $i = 0;
             if($request->cariJenis != ''){
                 if ( $i == 0 ){
-                    $sql = $sql . '?wisata a ?jenis .?jenis rdfs:subClassOf wisata:' . $request->cariJenis;
+                    $sql = $sql . '?wisata rdf:type wisata:' . $request->cariJenis;
                     $i++;
                 }
                 else{
-                    $sql = $sql . '. ?wisata a ?jenis .?jenis rdfs:subClassOf wisata:' . $request->cariJenis;
+                    $sql = $sql . '. ?wisata rdf:type wisata:' . $request->cariJenis;
                 }
             }
             else{
@@ -152,29 +130,7 @@ class PencarianController extends Controller
             else {
                 $sql = $sql;
             }
-            /*if ($request->cariUkuranLayar!= '') {
-                if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiUkuranLayar handphone:' . $request->cariUkuranLayar;
-                    $i++;
-                } 
-                else {
-                    $sql = $sql . '. ?hp handphone:memilikiUkuranLayar handphone:' . $request->cariUkuranLayar;
-                }  
-                
-            } 
-            else {
-                $sql = $sql;
-            }
-            if ($request->cariProsesor != '') {
-                if ($i == 0) {
-                    $sql = $sql . '?hp handphone:memilikiProsesor handphone:' . $request->cariProsesor;
-                    $i++;
-                } else {
-                    $sql = $sql . '. ?hp handphone:memilikiProsesor handphone:' . $request->cariProsesor;
-                }
-            } else {
-                $sql = $sql;
-            }*/
+            
             if ($request->cariHarga != '') {
                 if ($i == 0) {
                     $sql = $sql . '?wisata wisata:HargaSewaWahana ?hargaWahana .
@@ -226,8 +182,6 @@ class PencarianController extends Controller
             'listHargaSewa' => $resultHargaSewa,
             'listHargaParkirMotor' => $resultHargaParkirMotor,
             'listHargaParkirMobil' => $resultHargaParkirMobil,
-            /*'listSistemOperasi' => $resultSistemOperasi,
-            'listUkuranLayar' => $resultUkuranLayar,*/
             'searching1' => $resultWisata,
             'jumlahWisata' => $jumlahWisata,
             'resp' => $resp,
