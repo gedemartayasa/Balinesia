@@ -130,7 +130,7 @@ class RekomendasiController extends Controller
             ?wisata a ?tipeWisata .
             ";
 
-        // Budget
+        // Budget Travelling
         if ($budget != null) {
             $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
             ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
@@ -138,35 +138,130 @@ class RekomendasiController extends Controller
             FILTER ((?hargaTiketMasuk + ?hargaWahana) <= $budget) .";
         }
 
-        // Harga Wahana
+        // Harga Sewa Wahana
         if ($hargaWahana != null) {
             if ($budget != null) {
                 $sql = $sql . "FILTER (?hargaWahana <= $hargaWahana) .";
-            } else {
+            }elseif($hargaWahana == '100000') {
                 $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= $hargaWahana) .\n";
+                FILTER (?hargaWahana <= 100000) .\n";
+            }elseif($hargaWahana == '200000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 200000) .\n";
+            }elseif($hargaWahana == '300000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 300000) .\n";
+            }elseif($hargaWahana == '400000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 400000) .\n";
+            }elseif($hargaWahana == '500000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 500000) .\n";
+            }elseif($hargaWahana == '600000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 600000) .\n";
+            }elseif($hargaWahana == '700000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 700000) .\n";
+            }elseif($hargaWahana == '800000') {
+                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
+                FILTER (?hargaWahana <= 800000) .\n";
             }
         }
 
-        // Durasi Sewa
-        if ($durasiSewa != null) {
+        // Durasi Sewa Wahana
+        if ($durasiSewa == '') {
+            $sql = $sql;
+        }elseif($durasiSewa == '60'){
             $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
             ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= $durasiSewa) .\n";
+            FILTER (?durasi <= 60) .\n";
+        }elseif($durasiSewa == '120'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 120) .\n";
+        }elseif($durasiSewa == '180'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 180) .\n";
+        }elseif($durasiSewa == '240'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 240) .\n";
+        }elseif($durasiSewa == '300'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 300) .\n";
+        }elseif($durasiSewa == '360'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 360) .\n";
+        }elseif($durasiSewa == '420'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 420) .\n";
+        }elseif($durasiSewa == '480'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 480) .\n";
+        }elseif($durasiSewa == '540'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 540) .\n";
+        }elseif($durasiSewa == '600'){
+            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
+            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
+            FILTER (?durasi <= 600) .\n";
         }
 
-        // Popularitas
-        if ($popularitas != null) {
+        // Popularitas Objek Wisata
+        if ($popularitas == '') {
+            $sql = $sql;
+        }elseif($popularitas == '1'){
             $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
             ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= $popularitas) .";
+            FILTER (?nilaiPopularitas <= 1) .";
+        }elseif($popularitas == '2'){
+            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
+            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
+            FILTER (?nilaiPopularitas <= 2) .";
+        }elseif($popularitas == '3'){
+            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
+            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
+            FILTER (?nilaiPopularitas <= 3) .";
+        }elseif($popularitas == '4'){
+            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
+            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
+            FILTER (?nilaiPopularitas <= 4) .";
+        }elseif($popularitas == '5'){
+            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
+            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
+            FILTER (?nilaiPopularitas <= 5) .";
         }
 
-        // Kecepatan Akses
-        if ($kecepatanAkses != null) {
+        // Kecepatan Akses Lokasi
+        if ($kecepatanAkses == '') {
+            $sql = $sql;
+        }elseif ($kecepatanAkses == '0.5'){
             $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
             ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= $kecepatanAkses) .";
+            FILTER (?kecepatanAkses <= 0.5) .";
+        }elseif ($kecepatanAkses == '1'){
+            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
+            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
+            FILTER (?kecepatanAkses <= 1) .";
+        }elseif ($kecepatanAkses == '1.5'){
+            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
+            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
+            FILTER (?kecepatanAkses <= 1.5) .";
+        }elseif ($kecepatanAkses == '2'){
+            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
+            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
+            FILTER (?kecepatanAkses <= 2) .";
+        }elseif ($kecepatanAkses == '2.5'){
+            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
+            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
+            FILTER (?kecepatanAkses <= 2.5) .";
         }
 
         // Query closing

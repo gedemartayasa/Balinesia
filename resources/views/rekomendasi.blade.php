@@ -16,9 +16,14 @@
                     <label class="input-group-text">Harga Sewa Wahana</label>
                     <select class="form-control" aria-label="Default select example" id="hargaWahana" name="hargaWahana">
                         <option value="">Pilihlah salah satu</option>
-                        @foreach ($kriteria['listHargaSewa'] as $item)
-                            <option value="{{ $item['value'] }}"><span>Rp. </span>{{ str_replace('Harga_Sewa_', ' ', $item['hargaSewa']) }}</option>
-                        @endforeach
+                        <option value="100000">Rp. 100000</option>
+                        <option value="200000">Rp. 200000</option>
+                        <option value="300000">Rp. 300000</option>
+                        <option value="400000">Rp. 400000</option>
+                        <option value="500000">Rp. 500000</option>
+                        <option value="600000">Rp. 600000</option>
+                        <option value="700000">Rp. 700000</option>
+                        <option value="800000">Rp. 800000</option>
                     </select>
                 </div>
             </div>
@@ -32,9 +37,16 @@
                     <label class="input-group-text">Durasi Sewa Wahana</label>
                     <select class="form-select" aria-label="Default select example" id="durasiSewa" name="durasiSewa">
                         <option value="">Pilihlah salah satu</option>
-                        @foreach ($kriteria['listDurasiSewa'] as $item)
-                            <option value="{{ $item['value'] }}">{{ str_replace('_', ' ', $item['durasiSewa']) }}</option>
-                        @endforeach
+                        <option value="60">Durasi 60 Menit</option>
+                        <option value="120">Durasi 120 Menit</option>
+                        <option value="180">Durasi 180 Menit</option>
+                        <option value="240">Durasi 240 Menit</option>
+                        <option value="300">Durasi 300 Menit</option>
+                        <option value="360">Durasi 360 Menit</option>
+                        <option value="420">Durasi 420 Menit</option>
+                        <option value="480">Durasi 480 Menit</option>
+                        <option value="540">Durasi 540 Menit</option>
+                        <option value="600">Durasi 600 Menit</option>
                     </select>
                 </div>
             </div>
@@ -46,11 +58,11 @@
                     <label class="input-group-text">Popularitas Objek Wisata</label>
                     <select class="form-select" aria-label="Default select example" name="popularitas">
                         <option value="">Pilihlah salah satu</option>
-                        @foreach ($kriteria['listPopularitas'] as $item)
-                            <option value="{{ $item['value'] }}">
-                                {{ str_replace('_', ' ', $item['popularitas']) }}
-                            </option>
-                        @endforeach
+                        <option value="1">Bintang 1</option>
+                        <option value="2">Bintang 2</option>
+                        <option value="3">Bintang 3</option>
+                        <option value="4">Bintang 4</option>
+                        <option value="5">Bintang 5</option>
                     </select>
                 </div>
             </div>
@@ -65,11 +77,11 @@
                     <select class="form-select" aria-label="Default select example" id="kecepatanAkses"
                         name="kecepatanAkses">
                         <option value="">Pilihlah salah satu</option>
-                        @foreach ($kriteria['listKecepatanAkses'] as $item)
-                            <option value="{{ $item['value'] }}">
-                                {{ str_replace('_', ' ', $item['kecepatanAkses']) }}
-                            </option>
-                        @endforeach
+                        <option value="0.5">Kecepatan Akses 0.5 Jam</option>
+                        <option value="1">Kecepatan Akses 1 Jam</option>
+                        <option value="1.5">Kecepatan Akses 1.5 Jam</option>
+                        <option value="2">Kecepatan Akses 2 Jam</option>
+                        <option value="2.5">Kecepatan Akses 2.5 Jam</option>
                     </select>
                 </div>
             </div>
