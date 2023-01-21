@@ -37,13 +37,20 @@ class DashboardController extends Controller
 
     public function showCardWisata($limit)
     {
-        $wisata = $this->sparql->query('SELECT * WHERE{?wisata wisata:memilikiGambar ?memilikiGambar. ?wisata wisata:HargaSewaWahana ?HargaSewaWahana } ORDER BY ?wisata LIMIT '.$limit.'');
+        $wisata = $this->sparql->query('SELECT * WHERE{?wisata wisata:memilikiGambar ?memilikiGambar. 
+        ?wisata wisata:HargaSewaWahana ?HargaSewaWahana .
+        ?wisata wisata:isLocatedAt ?banjar .
+        ?banjar wisata:isPartOf ?desa .
+        ?desa wisata:isPartOf ?kecamatan .
+        ?kecamatan wisata:isPartOf ?kabupaten . } ORDER BY ?wisata LIMIT '.$limit.'');
         $result = [];
-        foreach ($wisata as $hp) {
+        foreach ($wisata as $data) {
             array_push($result, [
-                'nama' => $this->parseData($hp->wisata->getUri()),
-                'harga' => $this->parseData($hp->HargaSewaWahana->getValue()),
-                'gambar' => $this->parseData($hp->memilikiGambar->getValue())
+                'nama' => $this->parseData($data->wisata->getUri()),
+                //'harga' => $this->parseData($data->HargaSewaWahana->getValue()),
+                'gambar' => $this->parseData($data->memilikiGambar->getValue()),
+                'kecamatan' => $this->parseData($data->kecamatan->getUri()),
+                'kabupaten' => $this->parseData($data->kabupaten->getUri()),
             ]);
         }
         return $result;

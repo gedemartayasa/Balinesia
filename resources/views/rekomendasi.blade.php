@@ -16,14 +16,9 @@
                     <label class="input-group-text">Harga Sewa Wahana</label>
                     <select class="form-control" aria-label="Default select example" id="hargaWahana" name="hargaWahana">
                         <option value="">Pilihlah salah satu</option>
-                        <option value="100000">Rp. 100000</option>
-                        <option value="200000">Rp. 200000</option>
-                        <option value="300000">Rp. 300000</option>
-                        <option value="400000">Rp. 400000</option>
-                        <option value="500000">Rp. 500000</option>
-                        <option value="600000">Rp. 600000</option>
-                        <option value="700000">Rp. 700000</option>
-                        <option value="800000">Rp. 800000</option>
+                        @foreach ($kriteria['listHargaSewa'] as $item)
+                            <option value="{{ $item['value'] }}"><span>Rp. </span>{{ str_replace('Harga_Sewa_', ' ', $item['hargaSewa']) }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -37,16 +32,9 @@
                     <label class="input-group-text">Durasi Sewa Wahana</label>
                     <select class="form-select" aria-label="Default select example" id="durasiSewa" name="durasiSewa">
                         <option value="">Pilihlah salah satu</option>
-                        <option value="60">Durasi 60 Menit</option>
-                        <option value="120">Durasi 120 Menit</option>
-                        <option value="180">Durasi 180 Menit</option>
-                        <option value="240">Durasi 240 Menit</option>
-                        <option value="300">Durasi 300 Menit</option>
-                        <option value="360">Durasi 360 Menit</option>
-                        <option value="420">Durasi 420 Menit</option>
-                        <option value="480">Durasi 480 Menit</option>
-                        <option value="540">Durasi 540 Menit</option>
-                        <option value="600">Durasi 600 Menit</option>
+                        @foreach ($kriteria['listDurasiSewa'] as $item)
+                            <option value="{{ $item['value'] }}">{{ str_replace('_', ' ', $item['durasiSewa']) }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -58,11 +46,11 @@
                     <label class="input-group-text">Popularitas Objek Wisata</label>
                     <select class="form-select" aria-label="Default select example" name="popularitas">
                         <option value="">Pilihlah salah satu</option>
-                        <option value="1">Bintang 1</option>
-                        <option value="2">Bintang 2</option>
-                        <option value="3">Bintang 3</option>
-                        <option value="4">Bintang 4</option>
-                        <option value="5">Bintang 5</option>
+                        @foreach ($kriteria['listPopularitas'] as $item)
+                            <option value="{{ $item['value'] }}">
+                                {{ str_replace('_', ' ', $item['popularitas']) }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -77,11 +65,11 @@
                     <select class="form-select" aria-label="Default select example" id="kecepatanAkses"
                         name="kecepatanAkses">
                         <option value="">Pilihlah salah satu</option>
-                        <option value="0.5">Kecepatan Akses 0.5 Jam</option>
-                        <option value="1">Kecepatan Akses 1 Jam</option>
-                        <option value="1.5">Kecepatan Akses 1.5 Jam</option>
-                        <option value="2">Kecepatan Akses 2 Jam</option>
-                        <option value="2.5">Kecepatan Akses 2.5 Jam</option>
+                        @foreach ($kriteria['listKecepatanAkses'] as $item)
+                            <option value="{{ $item['value'] }}">
+                                {{ str_replace('_', ' ', $item['kecepatanAkses']) }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -204,9 +192,6 @@
                     <tr style="background-color: #6c757d; color:white; text-center">
                         <th scope="col">No</th>
                         <th scope="col">Nama Objek Wisata</th>
-                        <th scope="col">Harga Tiket Masuk</th>
-                        <th scope="col">Harga Parkir Mobil</th>
-                        <th scope="col">Harga Parkir Motor</th>
                         <th scope="col">Harga Sewa Wahana</th>
                         <th scope="col">Total Budget</th>
                         <th scope="col">Durasi Sewa Wahana</th>
@@ -219,9 +204,6 @@
                         <tr class="table-{{ $index % 2 == 0 ? 'secondary' : 'light' }}">
                             <th scope="row">{{ $index + 1 }}</th>
                             <td>{{ $item['nama'] }}</td>
-                            <td>{{ $item['tiketMasuk'] ?: 0 }}</td>
-                            <td>{{ $item['parkirMobil'] ?: 0 }}</td>
-                            <td>{{ $item['parkirMotor'] ?: 0 }}</td>
                             <td>{{ $item['hargaSewaWahana'] ?: 0 }}</td>
                             <td>{{ $item['budget'] ?: 0 }}</td>
                             <td>{{ $item['durasiSewaWahana'] ?: 0 }}</td>
@@ -264,7 +246,7 @@
                         <tr class="table-{{ $index % 2 == 0 ? 'secondary' : 'light' }}">
                             <th scope="row">{{ $index + 1 }}</th>
                             <td> <a style="text-decoration:none; color:black;"
-                                    href="/detail/{{str_replace(' ', '_', $item['nama']) }}">{{ $item['nama'] }}</a>
+                                href="/detail/{{str_replace(' ', '_', $item['nama']) }}">{{ $item['nama'] }}</a>
                             </td>
                             <td>{{ $item['bobot'] }}</td>
                         </tr>

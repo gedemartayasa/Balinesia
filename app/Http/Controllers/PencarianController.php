@@ -10,10 +10,10 @@ class PencarianController extends Controller
     {
         $jenisWisata = $this -> sparql -> query('SELECT * WHERE{?jenis rdfs:subClassOf wisata:ObjekWisata} ORDER BY ?jenis');
         $jamBuka = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:JamBuka} ORDER BY ?JamBuka');
-        $hargaTiket = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:HargaTiketMasuk} ORDER BY ?HargaTiketMasuk');
-        $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana} ORDER BY ?HargaSewaWahana');
-        $hargaParkirMotor =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMotor} ORDER BY ?HargaParkirMotor');
-        $hargaParkirMobil =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMobil} ORDER BY ?HargaParkirMobil');
+        $hargaTiket = $this -> sparql -> query('SELECT * WHERE{?Kriteria a wisata:HargaTiketMasuk ; wisata:HargaTiketMasuk ?tiket .} ORDER BY ?tiket');
+        $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana ; wisata:HargaSewaWahana ?harga .} ORDER BY ?harga');
+        $hargaParkirMotor =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMotor ; wisata:HargaParkirMotor ?parkirMotor .} ORDER BY ?parkirMotor');
+        $hargaParkirMobil =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMobil ; wisata:HargaParkirMobil ?parkirMobil .} ORDER BY ?parkirMobil');
 
         $resultJenis=[];
         $resultJamBuka=[];
@@ -136,13 +136,21 @@ class PencarianController extends Controller
                     $sql = $sql . '?wisata wisata:HargaSewaWahana ?hargaWahana .
                     ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <='. $request->cariHarga.')';
+                    ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor .
+                    ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
+                    ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
+                    ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <=' .$request->cariHarga.')';
                     $i++;
                 } else {
-                    $sql = $sql . '?wisata wisata:HargaSewaWahana ?hargaWahana .
+                    $sql = $sql .'. ?wisata wisata:HargaSewaWahana ?hargaWahana .
                     ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana) <='. $request->cariHarga.')';
+                    ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor .
+                    ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
+                    ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
+                    ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <='. $request->cariHarga.')';
                 }
             } else {
                 $sql = $sql;

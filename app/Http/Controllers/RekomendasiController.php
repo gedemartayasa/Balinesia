@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 
 class RekomendasiController extends Controller
@@ -85,7 +86,7 @@ class RekomendasiController extends Controller
         $listKriteria['listPopularitas'] = [];
 
         // Harga Sewa Wahana
-        $resultHargaSewaWahana = $this->sparql->query("SELECT * WHERE { ?hargaSewa a wisata:HargaSewaWahana ; wisata:HargaSewaWahana ?harga . }");
+        $resultHargaSewaWahana = $this->sparql->query("SELECT * WHERE { ?hargaSewa a wisata:HargaSewaWahana ; wisata:HargaSewaWahana ?harga . } ORDER BY ?harga");
         foreach ($resultHargaSewaWahana as $item) {
             array_push($listKriteria['listHargaSewa'], [
                 'hargaSewa' => $this->parseData($item->hargaSewa->getUri()),
@@ -94,7 +95,7 @@ class RekomendasiController extends Controller
         }
         
         // Durasi Sewa Wahana
-        $resultDurasiSewaWahana = $this->sparql->query("SELECT * WHERE { ?durasiSewa a wisata:DurasiSewaWahana ; wisata:nilaiDurasiSewa ?durasi . }");
+        $resultDurasiSewaWahana = $this->sparql->query("SELECT * WHERE { ?durasiSewa a wisata:DurasiSewaWahana ; wisata:nilaiDurasiSewa ?durasi . }ORDER BY ?durasi");
         foreach ($resultDurasiSewaWahana as $item) {
             array_push($listKriteria['listDurasiSewa'], [
                 'durasiSewa' => $this->parseData($item->durasiSewa->getUri()),
@@ -103,7 +104,7 @@ class RekomendasiController extends Controller
         }
 
         // Kecepatan Akses
-        $resultKecepatanAkses = $this->sparql->query("SELECT * WHERE { ?kecepatanAkses a wisata:KecepatanAkses ; wisata:nilaiKecepatanAkses ?kecepatan . }");
+        $resultKecepatanAkses = $this->sparql->query("SELECT  * WHERE { ?kecepatanAkses a wisata:KecepatanAkses ; wisata:nilaiKecepatanAkses ?kecepatan . } ORDER BY ?kecepatan");
         foreach ($resultKecepatanAkses as $item) {
             array_push($listKriteria['listKecepatanAkses'], [
                 'kecepatanAkses' => $this->parseData($item->kecepatanAkses->getUri()),
@@ -114,10 +115,13 @@ class RekomendasiController extends Controller
         // Popularitas
         $resultPopularitas = $this->sparql->query("SELECT DISTINCT * WHERE { ?popularitas a wisata:Popularitas ; wisata:nilaiPopularitas ?nilaiPopularitas . } ORDER BY ?popularitas");
         foreach ($resultPopularitas as $item) {
-            array_push($listKriteria['listPopularitas'], [
-                'popularitas' => str_replace('_', ' ', str_replace('Popularitas_', '', $this->parseData($item->popularitas->getUri()))),
-                'value' => $item->nilaiPopularitas->getValue(),
-            ]);
+            $val = $item->nilaiPopularitas->getValue();
+            if (is_numeric($val) && floor($val) == $val) {
+                array_push($listKriteria['listPopularitas'], [
+                    'popularitas' => str_replace('', ' ', str_replace('Popularitas', '', $this->parseData($item->popularitas->getUri()))),
+                    'value' => $item->nilaiPopularitas->getValue(),
+                ]);
+            }
         }
         
         return $listKriteria;
@@ -130,138 +134,47 @@ class RekomendasiController extends Controller
             ?wisata a ?tipeWisata .
             ";
 
-        // Budget Travelling
+        // Budget
         if ($budget != null) {
             $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
             ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
             ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-            FILTER ((?hargaTiketMasuk + ?hargaWahana) <= $budget) .";
+            ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor .
+            ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
+            ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
+            ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
+            FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <= $budget) .";
         }
 
-        // Harga Sewa Wahana
+        // Harga Wahana
         if ($hargaWahana != null) {
             if ($budget != null) {
                 $sql = $sql . "FILTER (?hargaWahana <= $hargaWahana) .";
-            }elseif($hargaWahana == '100000') {
+            } else {
                 $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 100000) .\n";
-            }elseif($hargaWahana == '200000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 200000) .\n";
-            }elseif($hargaWahana == '300000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 300000) .\n";
-            }elseif($hargaWahana == '400000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 400000) .\n";
-            }elseif($hargaWahana == '500000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 500000) .\n";
-            }elseif($hargaWahana == '600000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 600000) .\n";
-            }elseif($hargaWahana == '700000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 700000) .\n";
-            }elseif($hargaWahana == '800000') {
-                $sql = $sql . "?wisata wisata:HargaSewaWahana ?hargaWahana .
-                FILTER (?hargaWahana <= 800000) .\n";
+                FILTER (?hargaWahana <= $hargaWahana) .\n";
             }
         }
 
-        // Durasi Sewa Wahana
-        if ($durasiSewa == '') {
-            $sql = $sql;
-        }elseif($durasiSewa == '60'){
+        // Durasi Sewa
+        if ($durasiSewa != null) {
             $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
             ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 60) .\n";
-        }elseif($durasiSewa == '120'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 120) .\n";
-        }elseif($durasiSewa == '180'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 180) .\n";
-        }elseif($durasiSewa == '240'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 240) .\n";
-        }elseif($durasiSewa == '300'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 300) .\n";
-        }elseif($durasiSewa == '360'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 360) .\n";
-        }elseif($durasiSewa == '420'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 420) .\n";
-        }elseif($durasiSewa == '480'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 480) .\n";
-        }elseif($durasiSewa == '540'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 540) .\n";
-        }elseif($durasiSewa == '600'){
-            $sql = $sql . "?wisata wisata:memilikiDurasiSewa ?durasiSewa .
-            ?durasiSewa wisata:nilaiDurasiSewa ?durasi .
-            FILTER (?durasi <= 600) .\n";
+            FILTER (?durasi <= $durasiSewa) .\n";
         }
 
-        // Popularitas Objek Wisata
-        if ($popularitas == '') {
-            $sql = $sql;
-        }elseif($popularitas == '1'){
+        // Popularitas
+        if ($popularitas != null) {
             $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
             ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= 1) .";
-        }elseif($popularitas == '2'){
-            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
-            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= 2) .";
-        }elseif($popularitas == '3'){
-            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
-            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= 3) .";
-        }elseif($popularitas == '4'){
-            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
-            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= 4) .";
-        }elseif($popularitas == '5'){
-            $sql = $sql . "?wisata wisata:memilikiPopularitas ?popularitas .
-            ?popularitas wisata:nilaiPopularitas ?nilaiPopularitas .
-            FILTER (?nilaiPopularitas <= 5) .";
+            FILTER (?nilaiPopularitas <= $popularitas) .";
         }
 
-        // Kecepatan Akses Lokasi
-        if ($kecepatanAkses == '') {
-            $sql = $sql;
-        }elseif ($kecepatanAkses == '0.5'){
+        // Kecepatan Akses
+        if ($kecepatanAkses != null) {
             $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
             ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= 0.5) .";
-        }elseif ($kecepatanAkses == '1'){
-            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
-            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= 1) .";
-        }elseif ($kecepatanAkses == '1.5'){
-            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
-            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= 1.5) .";
-        }elseif ($kecepatanAkses == '2'){
-            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
-            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= 2) .";
-        }elseif ($kecepatanAkses == '2.5'){
-            $sql = $sql . "?wisata wisata:memilikiKecepatanAkses ?kecepatan .
-            ?kecepatan wisata:nilaiKecepatanAkses ?kecepatanAkses .
-            FILTER (?kecepatanAkses <= 2.5) .";
+            FILTER (?kecepatanAkses <= $kecepatanAkses) .";
         }
 
         // Query closing
@@ -340,16 +253,18 @@ class RekomendasiController extends Controller
                 OPTIONAL { ?wisata wisata:memilikiJamBuka ?jamBuka } .
                 OPTIONAL { ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk } .
                 OPTIONAL { ?wisata wisata:memilikiHargaSewaWahana ?hargaSewaWahana } .
+                OPTIONAL { ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil } .
+                OPTIONAL { ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor } .
                 OPTIONAL { 
                     ?wisata wisata:HargaSewaWahana ?hargaWahana .
                     ?wisata wisata:memilikiHargaTiketMasuk ?tiketMasuk .
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
-                    BIND (?hargaTiketMasuk + ?hargaWahana AS ?budget) . 
+                    ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
+                    ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
+                    BIND (?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil AS ?budget) . 
                 }
                 OPTIONAL { ?wisata wisata:memilikiKecepatanAkses ?kecepatanAkses } .
                 OPTIONAL { ?wisata wisata:memilikiDurasiSewa ?durasiSewaWahana } .
-                OPTIONAL { ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil } .
-                OPTIONAL { ?wisata wisata:memilikiHargaParkirMotor ?parkirMotor } .
                 OPTIONAL { ?wisata wisata:memilikiPopularitas ?popularitas } .
             }");
 
@@ -357,10 +272,10 @@ class RekomendasiController extends Controller
                 array_push($resultWisata, [
                     'nama' => str_replace('_',' ',$this->parseData($result[0]->wisata->getUri())),
                     'jenis' => property_exists($result[0], 'jenis') ? preg_replace("/([a-z])([A-Z])/s", "$1 $2", $this->parseData($result[0]->jenis->getUri())) : null,
-                    'banjar' => property_exists($result[0], 'banjar') ? str_replace('Banjar_', '', $this->parseData($result[0]->banjar->getUri())) : null,
+                    'banjar' => property_exists($result[0], 'banjar') ? str_replace('_', ' ', $this->parseData($result[0]->banjar->getUri())) : null,
                     'desa' => property_exists($result[0], 'desa') ? str_replace('_', ' ', $this->parseData($result[0]->desa->getUri())) : null,
                     'kecamatan' => property_exists($result[0], 'kecamatan') ? str_replace('_', ' ', $this->parseData($result[0]->kecamatan->getUri())) : null,
-                    'kabupaten' => property_exists($result[0], 'kabupaten') ? str_replace('Kabupaten_', '', $this->parseData($result[0]->kabupaten->getUri())) : null,
+                    'kabupaten' => property_exists($result[0], 'kabupaten') ? str_replace('_', ' ', $this->parseData($result[0]->kabupaten->getUri())) : null,
                     'jamBuka' => property_exists($result[0], 'jamBuka') ? str_replace('Jam_', '', $this->parseData($result[0]->jamBuka->getUri())) : null,
                     'gambar' => property_exists($result[0], 'gambar') ? $this->parseData($result[0]->gambar->getValue()) : null,
                     'tiketMasuk' => property_exists($result[0], 'tiketMasuk') ? str_replace('Harga_Tiket_', '', $this->parseData($result[0]->tiketMasuk->getUri())) : null,
@@ -377,35 +292,49 @@ class RekomendasiController extends Controller
         
         // dd($resultWisata);
         return $resultWisata;
-
     }
 
     public function getNormalisasi($data, $kriteria)
     {
+        $costs = array_slice($kriteria, 0, 5);
         $resultNormalization = [];
 
-        // dd($data, $kriteria);
-
         // Mencari nilai max tiap kriteria
-        $listMax = null;
+        $listMaxMin = null;
         foreach ($kriteria as $k) {
             $max = 0;
+            $min = PHP_INT_MAX;
+
             foreach ($data as $item) {
-                if ($item[$k] > $max) {
-                    $max = $item[$k];
+                if (in_array($k, $costs)) {
+                    // Min
+                    if ($item[$k] < $min) {
+                        $min = $item[$k];
+                    }
+                } else {
+                    // Max
+                    if ($item[$k] > $max) {
+                        $max = $item[$k];
+                    }
                 }
             }
-            $listMax[$k] = $max;
+            
+            $listMaxMin[$k] = in_array($k, $costs) ? $min : $max;
         }
 
         // Melakukan perhitungan normalisasi
-        // Rumus : Norm(x) = nilai(x) / max(x)
         foreach ($data as $item) {
             $itemNorm = [];
             $itemNorm['nama'] = $item['nama'];
             foreach ($kriteria as $k) {
                 if ($item[$k] > 0) {
-                    $itemNorm[$k] = $item[$k] / $listMax[$k];
+                    if (in_array($k, $costs)) {
+                        // Normalisasi cost
+                        $itemNorm[$k] = $item[$k] != 0 ? round($listMaxMin[$k] / $item[$k], 3) : 0;
+                    } else {
+                        // Normalisasi benefit
+                        $itemNorm[$k] = $listMaxMin[$k] != 0 ? round($item[$k] / $listMaxMin[$k], 3) : 0;
+                    }
                 } else {
                     $itemNorm[$k] = 0;
                 }
@@ -419,7 +348,7 @@ class RekomendasiController extends Controller
     public function getHasil($data, $bobot)
     {
         $hasil = [];
-        // dd($data, $bobot, $kriteria);
+        // dd($data, $bobot);
 
         // Menjumlahkan hasil normalisasi
         foreach ($data as $item) {

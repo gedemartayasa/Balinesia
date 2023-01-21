@@ -26,7 +26,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ str_replace('_',' ',$wisata['nama'])  }}</h5>
                 <?php $nama_wisata = str_replace(' ','_',$wisata['nama']) ?>
-                <p class="card-text"><span>Rp. </span>{{  $wisata['harga'] }}</p>
+                <p class="card-text" style="letter-spacing: 1.5px;"><i class="	fas fa-map-marker-alt"></i> {{  str_replace('Kabupaten_',' ',$wisata['kabupaten']) }}</p>
                 <a href="/detail/{{$wisata['nama']}}" class="btn btn-primary">Detail</a>
             </div>
         </div>

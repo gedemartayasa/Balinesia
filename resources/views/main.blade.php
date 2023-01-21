@@ -10,8 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="../img/favicon.png" rel="icon">
-  <link href="../img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="logo icon" type="png" href="{{ asset('img/logo.png') }}" /> 
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -36,7 +35,7 @@
     <div class="container d-flex justify-content-between">
 
       <div class="logo">
-        <h1><a href="index.html">BALINESIA</a></h1>
+        <h1><a href="index.html"><img src="{{ asset('img/logo.png') }}" alt="" class="img-fluid mx-2">BALINESIA</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
