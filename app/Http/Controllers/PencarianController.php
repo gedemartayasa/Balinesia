@@ -14,6 +14,7 @@ class PencarianController extends Controller
         $hargaSewa =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaSewaWahana ; wisata:HargaSewaWahana ?harga .} ORDER BY ?harga');
         $hargaParkirMotor =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMotor ; wisata:HargaParkirMotor ?parkirMotor .} ORDER BY ?parkirMotor');
         $hargaParkirMobil =$this->sparql->query('SELECT * WHERE{?Kriteria a wisata:HargaParkirMobil ; wisata:HargaParkirMobil ?parkirMobil .} ORDER BY ?parkirMobil');
+        $lokasi =$this->sparql->query('SELECT * WHERE{?Tempat a wisata:Kabupaten } ORDER BY ?Kabupaten');
 
         $resultJenis=[];
         $resultJamBuka=[];
@@ -21,6 +22,7 @@ class PencarianController extends Controller
         $resultHargaSewa = [];
         $resultHargaParkirMotor = [];
         $resultHargaParkirMobil = [];
+        $resultLokasi=[];
 
         foreach($jenisWisata as $item){
             array_push($resultJenis, [
@@ -51,6 +53,12 @@ class PencarianController extends Controller
         foreach ($hargaParkirMobil as $item) {
             array_push($resultHargaParkirMobil, [
                 'hargaParkirMobil' => $this->parseData($item->Kriteria->getUri())
+            ]);
+        }
+
+        foreach ($lokasi as $item) {
+            array_push($resultLokasi, [
+                'lokasi' => $this->parseData($item->Tempat->getUri())
             ]);
         }
         
@@ -130,6 +138,19 @@ class PencarianController extends Controller
             else {
                 $sql = $sql;
             }
+
+            if ($request->cariLokasi!= '') {
+                if ($i == 0) {
+                    $sql = $sql . '?wisata wisata:memilikiKabupaten wisata:' . $request->cariLokasi;
+                    $i++;
+                } 
+                else {
+                    $sql = $sql . '. ?wisata wisata:memilikiKabupaten wisata:' . $request->cariLokasi;
+                }  
+            } 
+            else {
+                $sql = $sql;
+            }
             
             if ($request->cariHarga != '') {
                 if ($i == 0) {
@@ -140,7 +161,7 @@ class PencarianController extends Controller
                     ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
                     ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
                     ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <=' .$request->cariHarga.')';
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ((?hargaParkirMotor + ?hargaParkirMobil) / 2)) <=' .$request->cariHarga.')';
                     $i++;
                 } else {
                     $sql = $sql .'. ?wisata wisata:HargaSewaWahana ?hargaWahana .
@@ -150,7 +171,7 @@ class PencarianController extends Controller
                     ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
                     ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
                     ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
-                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <='. $request->cariHarga.')';
+                    FILTER ((?hargaTiketMasuk + ?hargaWahana + ((?hargaParkirMotor + ?hargaParkirMobil) / 2)) <='. $request->cariHarga.')';
                 }
             } else {
                 $sql = $sql;
@@ -190,6 +211,7 @@ class PencarianController extends Controller
             'listHargaSewa' => $resultHargaSewa,
             'listHargaParkirMotor' => $resultHargaParkirMotor,
             'listHargaParkirMobil' => $resultHargaParkirMobil,
+            'listLokasi' => $resultLokasi,
             'searching1' => $resultWisata,
             'jumlahWisata' => $jumlahWisata,
             'resp' => $resp,

@@ -261,7 +261,7 @@ class RekomendasiController extends Controller
                     ?tiketMasuk wisata:HargaTiketMasuk ?hargaTiketMasuk .
                     ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
                     ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
-                    BIND (?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil AS ?budget) . 
+                    BIND (?hargaTiketMasuk + ?hargaWahana + ((?hargaParkirMotor + ?hargaParkirMobil) / 2) AS ?budget) . 
                 }
                 OPTIONAL { ?wisata wisata:memilikiKecepatanAkses ?kecepatanAkses } .
                 OPTIONAL { ?wisata wisata:memilikiDurasiSewa ?durasiSewaWahana } .

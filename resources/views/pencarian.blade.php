@@ -23,6 +23,17 @@
                 </div>
                 <div class="col-md-4">
                     <div class="input-group mb-3" >
+                        <label class="input-group-text">Lokasi</label>
+                        <select class="form-select" aria-label="Default select example" id="cariLokasi" name="cariLokasi">
+                            <option value="">Pilihlah salah satu</option>
+                            @foreach($data['listLokasi'] as $item)
+                                <option value="{{ $item['lokasi'] }}">{{ str_replace('_',' ',$item['lokasi']) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group mb-3" >
                         <label class="input-group-text">Jam Buka</label>
                         <select class="form-select" aria-label="Default select example" id="cariJamBuka" name="cariJamBuka">
                             <option value="">Pilihlah salah satu</option>
@@ -31,7 +42,9 @@
                             @endforeach
                         </select>
                     </div>
-                </div>
+                </div>          
+            </div>
+            <div class="row">
                 <div class="col-md-4">   
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Tiket Masuk</label>
@@ -42,9 +55,7 @@
                             @endforeach
                         </select>
                     </div>
-                </div>           
-            </div>
-            <div class="row">
+                </div> 
                 <div class="col-md-4">
                     <div class="input-group mb-3">
                         <label class="input-group-text">Harga Sewa Wahana</label>
