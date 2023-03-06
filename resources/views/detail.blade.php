@@ -18,12 +18,12 @@
         <div class="card" style="width: 100%;">
             <div class="card-header"> Ringkasan </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">Jam Buka {{ str_replace('Jam_',' ',$dtl['jamBuka']) }} WITA </li>
-              <li class="list-group-item">Harga Sewa Wahana Rp.{{ str_replace('Harga_Sewa_',' ',$dtl['hargasewa']) }} </li>
-              <li class="list-group-item">Harga Parkir Motor Rp. {{ str_replace('Harga_Parkir_',' ',$dtl['parkirMotor']) }}</li>
-              <li class="list-group-item">Harga Parkir Mobil Rp. {{ str_replace('Harga_Parkir_',' ',$dtl['parkirMobil']) }} </li>
-              <li class="list-group-item">{{ str_replace('_',' ',$dtl['kecepatanAkses']) }} dari Bandar Udara Internasional Ngurah Rai </li>
-              <li class="list-group-item">{{ str_replace('_',' ',$dtl['popularitas']) }} </li>
+              <li class="list-group-item"><i class='fas fa-clock' style="color: #183153"></i>&nbsp Buka {{ str_replace('Jam_',' ',$dtl['jamBuka']) }} WITA </li>
+              <li class="list-group-item"><i class='fas fa-tags' style="color: #183153"></i> Harga Sewa Wahana Rp.{{ str_replace('Harga_Sewa_',' ',$dtl['hargasewa']) }} </li>
+              <li class="list-group-item"><i class='fas fa-tags' style="color: #183153"></i> Harga Parkir Motor Rp. {{ str_replace('Harga_Parkir_',' ',$dtl['parkirMotor']) }}</li>
+              <li class="list-group-item"><i class='fas fa-tags' style="color: #183153"></i> Harga Parkir Mobil Rp. {{ str_replace('Harga_Parkir_',' ',$dtl['parkirMobil']) }} </li>
+              <li class="list-group-item"><i class='fas fa-tachometer-alt' style="color: #183153"></i> {{ str_replace('_',' ',$dtl['kecepatanAkses']) }} dari Bandar Udara Internasional Ngurah Rai </li>
+              <li class="list-group-item"><span class='fa fa-star' style="color: orange"></span> {{ str_replace('_',' ',$dtl['popularitas']) }} </li>
             </ul>
 	</div>
 </div>

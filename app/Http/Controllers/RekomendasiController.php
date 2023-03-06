@@ -6,8 +6,7 @@ use Exception;
 use Illuminate\Http\Request;
 
 class RekomendasiController extends Controller
-{
-    public function rekomendasi(Request $request)
+{    public function rekomendasi(Request $request)
     {
         if (isset($_GET['rekomendasi'])) {
             $resp = 1;
@@ -143,7 +142,7 @@ class RekomendasiController extends Controller
             ?parkirMotor wisata:HargaParkirMotor ?hargaParkirMotor .
             ?wisata wisata:memilikiHargaParkirMobil ?parkirMobil .
             ?parkirMobil wisata:HargaParkirMobil ?hargaParkirMobil .
-            FILTER ((?hargaTiketMasuk + ?hargaWahana + ?hargaParkirMotor + ?hargaParkirMobil) <= $budget) .";
+            FILTER ((?hargaTiketMasuk + ?hargaWahana + ((?hargaParkirMotor + ?hargaParkirMobil) / 2)) <= $budget) .";
         }
 
         // Harga Wahana
