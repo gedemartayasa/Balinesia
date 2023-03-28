@@ -13,7 +13,6 @@ class RekomendasiController extends Controller
             // Get request kriteria wisata & bobot kriteria wisata
             $wisata = $this->getWahana($request->budget, $request->hargaWahana, $request->durasiSewa, $request->popularitas, $request->kecepatanAkses);
             $bobotUser = $this->getBobotUser($request->bobotBudget, $request->bobotHargaWahana, $request->bobotDurasiSewa, $request->bobotPopularitas, $request->bobotKecepatanAkses);
-
             // Get query & jumlahData 
             $sql = $wisata[1];
             $jumlahData = count($wisata[0]);
@@ -44,6 +43,7 @@ class RekomendasiController extends Controller
             $jumlahData = 0;
             $resp = 0;
             $sql = [];
+            $bobotUser = [];
         } else {
             $resultDetailWisata = [];
             $resultBobot = [];
@@ -54,6 +54,7 @@ class RekomendasiController extends Controller
             $jumlahData = 0;
             $resp = 0;
             $sql = [];
+            $bobotUser = [];
         }
 
         $data = [
@@ -65,14 +66,16 @@ class RekomendasiController extends Controller
             'resultNormalisasi' => $resultNormalisasi,
             'resultRanking' => $resultRanking,
             'resultSAW' => $resultSAW,
-            'sql' => $sql
+            'sql' => $sql,
+                        
         ];
 
         return view('rekomendasi', [
             'title' => 'Fitur Rekomendasi',
             'page' => 'rekomendasi',
             'kriteria' => $this->getKriteriaDropdown(),
-            'data' => $data
+            'data' => $data,
+            'bobotUser' => $bobotUser
         ]);
     }
 
@@ -213,7 +216,9 @@ class RekomendasiController extends Controller
         // Kecepatan Akses
         $bobotUser['kecepatanAkses'] = $kecepatanAkses ? (int) $kecepatanAkses : 1;
 
+        //dd ($bobotUser);
         return $bobotUser;
+
     }
 
     private function getKriteria()
@@ -347,20 +352,22 @@ class RekomendasiController extends Controller
     public function getHasil($data, $bobot)
     {
         $hasil = [];
-        // dd($data, $bobot);
+        //dd($data, $bobot);
 
         // Menjumlahkan hasil normalisasi
         foreach ($data as $item) {
             $totalBobot = 0;
+            $bobot;
             foreach ($bobot as $key => $value) {
                 $totalBobot += $item[$key] * $value;
             }
             array_push($hasil, [
                 'nama' => $item['nama'],
-                'bobot' => $totalBobot
+                'bobot' => $totalBobot,
             ]);
+            
         }
-
+        // dd ($bobot);
         // dd($hasil);
         return $hasil;
     }

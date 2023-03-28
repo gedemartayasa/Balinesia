@@ -30,7 +30,7 @@
             <div class="col-lg-5 col-md-9 col-sm-9">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Durasi Sewa Wahana</label>
-                    <select class="form-select" aria-label="Default select example" id="durasiSewa" name="durasiSewa">
+                    <select class="form-control" aria-label="Default select example" id="durasiSewa" name="durasiSewa">
                         <option value="">Pilihlah salah satu</option>
                         @foreach ($kriteria['listDurasiSewa'] as $item)
                             <option value="{{ $item['value'] }}">{{ str_replace('_', ' ', $item['durasiSewa']) }}</option>
@@ -44,7 +44,7 @@
             <div class="col-lg-5 col-md-9 col-sm-9">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Popularitas Objek Wisata</label>
-                    <select class="form-select" aria-label="Default select example" name="popularitas">
+                    <select class="form-control" aria-label="Default select example" name="popularitas">
                         <option value="">Pilihlah salah satu</option>
                         @foreach ($kriteria['listPopularitas'] as $item)
                             <option value="{{ $item['value'] }}">
@@ -62,7 +62,7 @@
             <div class="col-lg-5 col-md-9 col-sm-9">
                 <div class="input-group mb-3">
                     <label class="input-group-text">Kecepatan Akses Lokasi</label>
-                    <select class="form-select" aria-label="Default select example" id="kecepatanAkses"
+                    <select class="form-control" aria-label="Default select example" id="kecepatanAkses"
                         name="kecepatanAkses">
                         <option value="">Pilihlah salah satu</option>
                         @foreach ($kriteria['listKecepatanAkses'] as $item)
@@ -153,7 +153,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <h6 class="mt-4 mb-3">2. Nilai atau Bobot Destinasi Wisata</h6>
+            <h6 class="mt-4 mb-3">2. Nilai Kriteria Destinasi Wisata</h6>
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color: #6c757d; color:white; text-center">
@@ -186,7 +186,29 @@
                     @endforeach
                 </tbody>
             </table>
-            <h6 class="mt-4 mb-3">3. Normalisasi</h6>
+            <h6 class="mt-4 mb-3">3. Inputan Bobot Kriteria Destinasi Wisata</h6>
+            <table class="table table-hover">
+                <thead>
+                    <tr style="background-color: #6c757d; color:white; text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Bobot</th>   
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        $index = 1;
+                    ?>
+                    @foreach ($bobotUser as $idx => $bobot)
+                        <tr class="table-{{ $index % 2 == 1 ? 'secondary' : 'light' }}">
+                            <th scope="row">{{ $index ++ }}</th>
+                            <td>{{ ucwords($idx) }}</td>
+                            <td>{{ $bobot }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <h6 class="mt-4 mb-3">4. Normalisasi</h6>
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color: #6c757d; color:white; text-center">
@@ -208,12 +230,12 @@
                             <td>{{ $item['budget'] ?: 0 }}</td>
                             <td>{{ $item['durasiSewaWahana'] ?: 0 }}</td>
                             <td>{{ $item['kecepatanAkses'] ?: 0 }}</td>
-                            <td>{{ $item['popularitas'] ?: 0 }}</td>
+                            <td>{{ $item['popularitas'] ?: 0 }} </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <h6 class="mt-4 mb-3">4. Hasil Pembobotan</h6>
+            <h6 class="mt-4 mb-3">5. Hasil Pembobotan</h6>
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color: #6c757d; color:white; text-center">
@@ -232,7 +254,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <h6 class="mt-4 mb-3">5. Ranking</h6>
+            <h6 class="mt-4 mb-3">6. Ranking</h6>
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color: #6c757d; color:white; text-center">

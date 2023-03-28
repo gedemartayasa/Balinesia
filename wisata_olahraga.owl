@@ -1,0 +1,1950 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/martayasa/wisata_olahraga#"
+     xml:base="http://www.semanticweb.org/martayasa/wisata_olahraga"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:wisata_olahraga="http://www.semanticweb.org/martayasa/wisata_olahraga#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#isLocatedAt -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#isLocatedAt">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#isPartOf">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#IbuKota"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Island"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiDurasiSewa -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiDurasiSewa">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaParkirMobil -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaParkirMobil">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaParkirMotor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaParkirMotor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaSewaWahana -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaSewaWahana">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaTiketMasuk -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiHargaTiketMasuk">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiJamBuka -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiJamBuka">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiKabupaten -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiKabupaten">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiKecepatanAkses -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiKecepatanAkses">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiPopularitas -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiPopularitas">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#linkMAP -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#linkMAP"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiGambar -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#memilikiGambar"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiDurasiSewa -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiDurasiSewa">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiKecepatanAkses -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiKecepatanAkses">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiPopularitas -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#nilaiPopularitas">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#IbuKota -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#IbuKota">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Island -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Island">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahraga"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#ObjekWisata -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#ObjekWisata">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahraga"/>
+        <owl:disjointWith rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Tempat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahraga"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahraga -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahraga">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#ObjekWisata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#ObjekWisata"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#ObjekWisata"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#ATV_Ubud_Adventure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#ATV_Ubud_Adventure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Silakarang"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Singapadu_Kaler"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_90_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_400000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:30"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.2_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.6"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">400000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/oeNbS6QWrPvbPiky8</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">atv_ubud_adventure.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Ayung_Rafting -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Ayung_Rafting">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tanggayuda"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Payangan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_120_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_250000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_07:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.2_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.6"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">250000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/UgWYX4aaCmeBr2W46</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ayung_rafting.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Balaji_ATV_Adventure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Balaji_ATV_Adventure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Penginyahan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Puhu"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_120_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_350000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.8"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">350000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/YyJPoXeEAQeRnguK9</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">balaji_atv_adventure.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Banana_Boat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Banana_Boat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_80000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">80000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/nHqYQSfW2UGVKkCC8</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bali_banana_boat.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Jet_Ski -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Jet_Ski">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_185000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">185000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/mwVQoQxmfKnjkfHUA</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bali_jet_ski.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Rolling_Donut -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Rolling_Donut">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_125000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">125000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/mwVQoQxmfKnjkfHUA</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bali_rolling_donut.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Seawalker -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Seawalker">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_60_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_325000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">325000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/mwVQoQxmfKnjkfHUA</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bali_seawalker.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Snorkeling_Tour -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Bali_Snorkeling_Tour">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_60_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_150000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">150000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/mwVQoQxmfKnjkfHUA</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bali_snorkeling_tour.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Amed -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Amed">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Purwakerti"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Batu_Jimbar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Batu_Jimbar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sanur_Kaja"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Bayad -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Bayad">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Melinggih_Kelod"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Jaba_Pura -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Jaba_Pura">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Kutuh"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kalanganyar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kalanganyar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sibetan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kawan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kawan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Bakas"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kelod -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kelod">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Pecatu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Langsat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Langsat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Muncan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Nagi -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Nagi">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Petulu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Pengembungan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Pengembungan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batubulan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Penginyahan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Penginyahan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Puhu"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Sawangan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Sawangan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sawangan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Serongga -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Serongga">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batur_Tengah"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Silakarang -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Silakarang">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Singapadu_Kaler"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tanggayuda -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tanggayuda">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Payangan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Tengkulung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Bakas -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Bakas">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Banjarangkan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batubulan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batubulan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batur_Tengah -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batur_Tengah">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kintamani"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Kutuh -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Kutuh">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Melinggih_Kelod -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Melinggih_Kelod">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Muncan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Muncan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Selat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Payangan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Payangan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Pecatu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Pecatu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Petulu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Petulu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Puhu -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Puhu">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Purwakerti -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Purwakerti">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Abang"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sanur_Kaja -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sanur_Kaja">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Denpasar_Selatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sawangan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sawangan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sibetan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sibetan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Bebandem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Singapadu_Kaler -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Singapadu_Kaler">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_10_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_10_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_120_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_120_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">120</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_150_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_150_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">150</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">15</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_180_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_180_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">180</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_420_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_420_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">420</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_4_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_4_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_600_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_600_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">600</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_60_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_60_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">60</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_75_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_75_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">75</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_90_Menit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_90_Menit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#DurasiSewaWahana"/>
+        <nilaiDurasiSewa rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">90</nilaiDurasiSewa>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Gunung_Batur_Trekking -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Gunung_Batur_Trekking">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Serongga"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batur_Tengah"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Bangli"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kintamani"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_600_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_300000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_10000"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_03:30"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Bangli"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.2_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">300000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10000</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/xsQV7eYk3x9zGqhz7</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">gunung_batur_trekking.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor"/>
+        <HargaParkirMobil rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaParkirMobil>
+        <HargaParkirMotor rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaParkirMotor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_10000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_10000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil"/>
+        <HargaParkirMobil rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10000</HargaParkirMobil>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_2000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_2000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor"/>
+        <HargaParkirMotor rdf:datatype="http://www.w3.org/2001/XMLSchema#int">2000</HargaParkirMotor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_3000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_3000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMotor"/>
+        <HargaParkirMotor rdf:datatype="http://www.w3.org/2001/XMLSchema#int">3000</HargaParkirMotor>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaParkirMobil"/>
+        <HargaParkirMobil rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5000</HargaParkirMobil>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_125000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_125000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">125000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_150000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_150000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">150000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_185000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_185000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">185000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_225000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_225000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">225000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_250000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_250000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">250000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_300000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_300000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">300000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_325000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_325000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">325000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_350000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_350000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">350000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_400000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_400000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">400000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_485000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_485000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">485000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_50000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_50000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">50000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_550000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_550000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">550000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_650000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_650000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">650000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_775000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_775000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">775000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_80000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_80000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">80000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_800000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_800000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaSewaWahana"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kriteria"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">800000</HargaSewaWahana>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_10000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_10000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">10000</HargaTiketMasuk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_15000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_15000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">15000</HargaTiketMasuk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_5000 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_5000">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#HargaTiketMasuk"/>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5000</HargaTiketMasuk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jambe_Asri_ATV_Adventure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jambe_Asri_ATV_Adventure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Pengembungan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Batubulan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_120_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_485000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.8_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">485000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/cq7NCkyCRc2nGRLe9</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jambe_asri_atv_adventure.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jatiluwih_Cycling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jatiluwih_Cycling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Nagi"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Petulu"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_420_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_800000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_15000"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:30"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.1_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.7"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">800000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">15000</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/E5ECDsTqVmDsm2S67</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jatiluwih_cycling.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Bangli -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Bangli">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Klungkung -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Klungkung">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Abang -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Abang">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Banjarangkan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Banjarangkan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Klungkung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Bebandem -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Bebandem">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Denpasar_Selatan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Denpasar_Selatan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kota_Denpasar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kintamani -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kintamani">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Bangli"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Selat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Selat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Sukawati">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Ubud">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.6_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.6_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.6</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.8_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.8_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.8</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.2_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.2_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.2</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.4_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.4_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.4</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.1_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.1_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.1</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.2_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.2_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.2</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.5_Jam -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.5_Jam">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#KecepatanAkses"/>
+        <nilaiKecepatanAkses rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5</nilaiKecepatanAkses>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kelurahan_Tanjung_Benoa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kota_Denpasar -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kota_Denpasar">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Kuber_Bali_Adventure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Kuber_Bali_Adventure">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Bayad"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Melinggih_Kelod"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Payangan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_90_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_650000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Gianyar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.4_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.6"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">650000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/8fbqXv3K2otkyZLE7</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">kuber_bali_adventure.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Nyang_Nyang_Paragliding -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Nyang_Nyang_Paragliding">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kelod"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Pecatu"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_2000"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_550000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_11:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">550000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/VuLfAHnUET6RtvMY6</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nyang_nyang_paragliding.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Pantai_Amed_Snorkeling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Pantai_Amed_Snorkeling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Amed"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Purwakerti"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Abang"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_60_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_10000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_3000"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_50000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_5000"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_00:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_2.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">50000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">5000</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/2ErUBkfsXYsfD4pY6</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">pantai_amed_snorkeling.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Paralayang_Bukit_Riug -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Paralayang_Bukit_Riug">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Sawangan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sawangan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_10_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_550000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.9"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">550000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/ZtwgXeRGLdW1Au4j9</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">paralayang_bukit_riug.jpeg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Parasailing_Pantai_Sanur -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Parasailing_Pantai_Sanur">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Batu_Jimbar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sanur_Kaja"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Denpasar_Selatan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kota_Denpasar"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_4_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_2000"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_225000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_07:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kota_Denpasar"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">225000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/VE3D81RGwLegZ8Uc7</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">parasailing_pantai_sanur.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_3 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_3">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.5</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.6 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.6">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.6</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.7">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.7</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.8">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.8</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.9">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.9</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_5">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas"/>
+        <nilaiPopularitas rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5</nilaiPopularitas>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Rafting_Sungai_Melangit -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Rafting_Sungai_Melangit">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kawan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Bakas"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Klungkung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Banjarangkan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_75_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_350000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_07:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Klungkung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">350000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/y3JFTnKVaxmBDFzY7</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">rafting_sungai_melangit.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Salak_Agro_Cycling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Salak_Agro_Cycling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaDarat"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Kalanganyar"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Sibetan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Bebandem"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_180_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_400000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_04:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.8"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">400000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/GbYeXeNECgkgamZz7</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">salak_agro_cycling.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Telaga_Waja_Rafting -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Telaga_Waja_Rafting">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaAir"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Langsat"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Muncan"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Selat"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_150_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_5000"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_3000"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_300000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Karangasem"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_1.5_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_4.5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">300000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/Yr3o5K9LvqMw3i9E8</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">telaga_waja_rafting.jpg</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Timbis_Paragliding -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Timbis_Paragliding">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#WisataOlahragaUdara"/>
+        <isLocatedAt rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Banjar_Jaba_Pura"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Desa_Kutuh"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <isPartOf rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecamatan_Kuta_Selatan"/>
+        <memilikiDurasiSewa rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Durasi_15_Menit"/>
+        <memilikiHargaParkirMobil rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaParkirMotor rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Parkir_0"/>
+        <memilikiHargaSewaWahana rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Sewa_775000"/>
+        <memilikiHargaTiketMasuk rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Harga_Tiket_0"/>
+        <memilikiJamBuka rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_13:00"/>
+        <memilikiKabupaten rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kabupaten_Badung"/>
+        <memilikiKecepatanAkses rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Kecepatan_Akses_0.6_Jam"/>
+        <memilikiPopularitas rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#Popularitas_Bintang_5"/>
+        <HargaSewaWahana rdf:datatype="http://www.w3.org/2001/XMLSchema#int">775000</HargaSewaWahana>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#int">0</HargaTiketMasuk>
+        <linkMAP rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://goo.gl/maps/tXFWjyUTF8c5Ea3G6</linkMAP>
+        <memilikiGambar rdf:datatype="http://www.w3.org/2001/XMLSchema#string">timbis_paragliding.png</memilikiGambar>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_00:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_00:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <HargaTiketMasuk rdf:datatype="http://www.w3.org/2001/XMLSchema#string">00:00 WITA</HargaTiketMasuk>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_03:30 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_03:30">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">03:30 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_04:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_04:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">04:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_07:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_07:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">07:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">08:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:30 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_08:30">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">08:30 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_09:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">09:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_11:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_11:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">11:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_13:00 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martayasa/wisata_olahraga#Jam_13:00">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martayasa/wisata_olahraga#JamBuka"/>
+        <JamBuka rdf:datatype="http://www.w3.org/2001/XMLSchema#string">13:00 WITA</JamBuka>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
